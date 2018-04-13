@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 ruby "2.3.4"
 
+gem 'devise', '4.3.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3', group: [:development, :test]
+gem 'sqlite3', group: [:development, :test]
 	
 #postgres for production db
 #postgres for production db
