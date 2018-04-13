@@ -10,6 +10,8 @@ gem 'rails', '4.2.5'
 #postgres for production db
 gem 'pg', '0.20.0'
 
+gem 'puma'
+
 gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
