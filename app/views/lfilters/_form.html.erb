@@ -1,4 +1,19 @@
-<%= form_for(@lfilter) do |f| %>
+ <%= render 'layouts/header' %>
+
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h4 class="title">Add A New Filter</h4>
+                                <p class="category">Parents Only</p>
+                                </div>
+                            <div class="content table-responsive table-full-width">
+                             
+                                  
+                              
+                                    <%= form_for(@lfilter) do |f| %>
   <% if @lfilter.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lfilter.errors.count, "error") %> prohibited this lfilter from being saved:</h2>
@@ -11,15 +26,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :lfilter %><br>
-    <%= f.text_field :lfilter %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+    <div class="field">
+     <tr>
+<th> <div class="field"><%= f.label :lfilter %><br><p><%= f.text_field :lfilter %><br> </div><%= f.label :email %><br><p><%= f.text_field :email, required: true, value:current_user.email, :readonly => true  %><br> <div class="actions"> <%= f.submit 'Create', class: "btn purple-button"  %></div>   </p></th>
+</tr> 
+  </div>   
+ 
+
 <% end %>
+     <div class="field">
+     <tr>
+<th> <p><%= link_to("Back", {:controller => 'parents', :action => 'index'}) %></p></th>
+</tr> 
+  </div> 
+
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                                 </div>
+                        </div>
+                    </div>
+ <%= render 'layouts/footer' %>

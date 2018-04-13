@@ -4,7 +4,13 @@ class LfiltersController < ApplicationController
   # GET /lfilters
   # GET /lfilters.json
   def index
-    @lfilters = Lfilter.all
+    #@lfilters = Lfilter.all
+    ##Here we personalise filters so that each user will have their own unique filter
+    #displaying currnet user
+    @user = current_user
+    @user_email = current_user.email
+    #display the pfilters with the current user
+    @lfilters= Lfilter.where("email like ? ", @user_email) 
   end
 
   # GET /lfilters/1
@@ -17,9 +23,6 @@ class LfiltersController < ApplicationController
     @lfilter = Lfilter.new
   end
 
-  # GET /lfilters/1/edit
-  def edit
-  end
 
   # POST /lfilters
   # POST /lfilters.json

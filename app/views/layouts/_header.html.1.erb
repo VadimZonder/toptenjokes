@@ -1,0 +1,334 @@
+
+<div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image="assets/images/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="https://www.linkedin.com/in/vadim-malakhovski/" class="simple-text">
+                    EJournal
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="parents.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Parents</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="students.html">
+                        <i class="pe-7s-user"></i>
+                        <p>Teachers</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="views/static_pages/table.html.erb">
+                        <i class="pe-7s-note2"></i>
+                        <p>Education Articles</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="typography.html">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>About Us</p>
+                    </a>
+                </li>
+                  <!--
+                <li>
+                    <a href="icons.html">
+                        <i class="pe-7s-science"></i>
+                        <p>How To Tutorial</p>
+                    </a>
+                </li>
+              
+                <li>
+                    <a href="maps.html">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                -->
+                <li>
+                    <a href="notifications.html">
+                        <i class="pe-7s-bell"></i>
+                        <p>Notifications</p>
+                    </a>
+                </li>
+				<li class="active-pro">
+                    <a href="upgrade.html">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Support Us</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--<a class="navbar-brand" href="#">Dashboard</a>-->
+<!-------------------------------------------------------------------------------  headers-->
+                    <!--going back-->
+                    <a class="navbar-brand" href="../">
+                      <%= "Home"%>
+                    <% link_to "Home", root_path  %>
+                    </a>
+ <!-------------------------------------------------------------------------------  END  headers-->                
+                 
+                     <a class="navbar-brand" href="#">
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+								<p class="hidden-lg hidden-md">Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-lg hidden-md"></b>
+									<p class="hidden-lg hidden-md">
+										5 Notifications
+										<b class="caret"></b>
+									</p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+								<p class="hidden-lg hidden-md">Search</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                     
+                     <!--USER name + surename ----------------------------------------------------------------------------------------->
+                     <!--add if loged in user if not loged in login/signup-->
+                     <li>
+                     <a href="">
+                      <p><%= "Welcome:   #{@user}" %></p>
+                      </a>
+                      </li>
+                      <!--USER name + surename END----------------------------------------------------------------------------------------->
+                      
+                       <!-- delete on completion
+                        <li>
+                           <a href="">
+                               <p>Account</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+										Dropdown
+										<b class="caret"></b>
+									</p>
+
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                        -->
+                         
+                               <% if current_user %>
+                       
+                         <li>  
+                            <a href="logout">
+                 
+                 <%= "Log Out"%>
+                 <% link_to "Log Out", logout_path  %>
+                 </a>
+                </li> 
+          <% else %> 
+         
+               <li>  
+                 <li> 
+                     <a  class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <!--href="signup"-->
+                 
+                      <%="Register"%>
+                      <%# link_to 'Register', signup_path %>
+                      </a>
+                      
+
+
+                      <%# render 'form' %>
+
+<%# link_to 'Back', users_path %>
+                      </li> 
+                      
+
+      
+         
+                      <li> 
+                      <a>or</a>
+                      </li> 
+                        
+                          <li> 
+                    <a href="login"> 
+                  
+                     <%="Sign In"%>
+                     <%link_to 'Sign in', login_path %>
+                     </a>
+
+                      </li>   
+                   </li>  
+              
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+   <%= form_for User.new do |f| %>
+  <% if User.new.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+   </div>
+</div>
+
+
+             <% end %>                   <!-- <p>Log out</p>             </li>-->
+                           
+                      
+						<li class="separator hidden-lg"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+<!-- add _name.html.erb and then can render in another vews html.erb file + can be rendered on multiple pages to maintain DRY principle
+<div id='header'>
+</div>
+<div id='menu'>
+    <div id='navbar'>
+         <ul>
+            <li><%# link_to "Home",   root_path %></li>
+             <li><%# link_to "Post", posts_path %></li>
+            <li><%# link_to "Help",   help_path %></li>
+            <li><%# link_to "About",  about_path %></li>
+            <li><%# link_to "Log in", admin_path %></li>
+            <li><%# link_to "Signup", signup_path %></li>
+            <li><%# link_to "Log in", login_path %></li>
+            <li><%# link_to "Log Out", logout_path %></li>
+            <li><%# link_to "___THIS IS FROM DEVISE___"%></li>
+            
+            <%# if current_user %>
+                 <div>Signed in as... <%#current_user.email %> (<%#link_to 'Sign out', logout_path, :method => :delete %>)</div>
+          <%#else %>
+                 <%#link_to 'Register', signup_path %> or <%# link_to 'Sign in', login_path %>
+          <%#end %>
+
+         </ul>      
+    </div>
+</div>
+-->
+
+
+<!--
+
+                      <script>
+                      $(document).ready(function() {
+ 
+
+                        $("form#login-box").bind "ajax:success", (e, data, status, xhr) ->
+    if data.success
+      //javascript that executes if everything goes o.k.
+      $('#sign_in').modal('hide');
+      $('#sign_in_button').hide();
+      $('#submit_comment').slideToggle(1000, "easeOutBack" );
+    else
+      alert('failure!');
+      $('#submit').click(function(){
+    alert("hi");
+ });
+      });</script>
+      
+      
+                          <li> 
+                 <a href="login">  
+
+                    <h2>Sign in</h2>  
+                
+   <%#devise_error_messages! %>
+   <%#form_for(resource, :as => resource_name, :url => session_path(resource_name) ,:html => {:id => "login-box"},:format => :json, :remote => true ) do |f| %>
+
+ 
+    <%# f.email_field :email, :class => "form-control", :placeholder => "Email", autocomplete: "on" %>
+   <%# f.password_field :password, :class => "form-control", :placeholder => "Password", autocomplete: "off" %>
+
+       <%# if devise_mapping.rememberable? -%>
+       <%# f.check_box :remember_me, :style => "margin-top:20px;margin-bottom:20px;" %>
+       <%# f.label :remember_me, :style => "margin-top:20px;margin-bottom:20px;" %>
+       <%#end -%>
+
+
+       <%# f.submit "Sign In", :class => "btn btn-default btn-login", :id=> "submit"%>
+
+       <%# end %>
+    </div>
+    
+   -->

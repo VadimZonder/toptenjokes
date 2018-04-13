@@ -4,21 +4,34 @@ class PfiltersController < ApplicationController
   # GET /pfilters
   # GET /pfilters.json
   def index
-    @pfilters = Pfilter.all
+    #@pfilters = Pfilter.all
+    ##Here we personalise filters so that each user will have their own unique filter
+    #displaying currnet user
+    @user = current_user
+    @user_email = current_user.email
+    #display the pfilters with the current user
+    @pfilters= Pfilter.where("email like ? ", @user_email) 
   end
 
   # GET /pfilters/1
   # GET /pfilters/1.json
   def show
+    #displaying currnet user
+    @user = current_user
   end
 
   # GET /pfilters/new
   def new
+    #displaying currnet user
+    @user = current_user
+    
     @pfilter = Pfilter.new
   end
 
   # GET /pfilters/1/edit
   def edit
+    #displaying currnet user
+    @user = current_user
   end
 
   # POST /pfilters
@@ -28,7 +41,7 @@ class PfiltersController < ApplicationController
 
     respond_to do |format|
       if @pfilter.save
-        format.html { redirect_to @pfilter, notice: 'Pfilter was successfully created.' }
+        format.html { redirect_to students_url, notice: 'Filter was successfully created.' }
         format.json { render :show, status: :created, location: @pfilter }
       else
         format.html { render :new }
@@ -42,7 +55,7 @@ class PfiltersController < ApplicationController
   def update
     respond_to do |format|
       if @pfilter.update(pfilter_params)
-        format.html { redirect_to @pfilter, notice: 'Pfilter was successfully updated.' }
+        format.html { redirect_to students_url, notice: 'Filter was successfully updated.' }
         format.json { render :show, status: :ok, location: @pfilter }
       else
         format.html { render :edit }
@@ -56,7 +69,7 @@ class PfiltersController < ApplicationController
   def destroy
     @pfilter.destroy
     respond_to do |format|
-      format.html { redirect_to pfilters_url, notice: 'Pfilter was successfully destroyed.' }
+      format.html { redirect_to students_url, notice: 'Filter was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

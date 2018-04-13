@@ -1,0 +1,156 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.4/jquery.min.js"></script>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js", "chartkick" %>
+  <%= javascript_include_tag "https://code.highcharts.com/highcharts.js", "chartkick" %>
+  <%= javascript_include_tag "https://code.highcharts.com/highcharts.src.js", "chartkick" %>
+  <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
+  <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
+  
+<!-- 
+<p id="notice"><%# notice %></p>
+
+!!!!!!!!!!!!!!!RUN THIS ONLY IF TESULTS ARE NOT EMPTY ALL VIEWS MUST HAVE WHERE THEY REQUEST/GET FROM DB IN CONTROLLER @var.each index GET not posts-->
+<!-- Dublicate helpfull graphs 1 to show the lates results and the other the average make +1 to sho trends in time-->
+ <%# table of all the results for a particular student%>
+<% if @results.length == 0 %>
+                        <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h3 class="title">There are no results yet added for this student</h3>
+                                <h4><%= link_to 'Add A New Result', new_result_path %></h4>
+                                
+                            </div>
+                            </div>
+                            </div>
+<% else %>
+<%# make divs stack upon one another%>
+<div class="content">
+            <div class="container-fluid">
+              <h2 class="title">Listing Results for Parents</h2>
+                 <h5 class="category"><%= link_to 'Add A New Result', new_result_path %></h5>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Total Averages of all the Subjects</h3>
+<%= column_chart Result.group(:classes).average("grade") %>
+
+
+
+</div>
+
+<%# table average%>
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Total Averages in Pie</h3>
+    <%#pie_chart Result.group(:classes).sum(:grade) %>
+   <%=  pie_chart Result.group(:classes).average("grade")  %>
+  </div>
+</div>
+</div>
+</div>
+<!-- Line Chart - Multiple Series -->
+
+  <div class="col-xs-12">
+    <h3>Trends Table</h3>
+    <%# line_chart data,min: 1, max: 5000%>
+    <%# line_chart   Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group_by_day(:updated_at, format: "%B %d, %Y").count }  }, discrete: true %>
+    <%# line_chart  Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group(:created_at).sum(:grade) } }, discrete: true%>
+    <%= line_chart Result.group(:classes).group(:created_at).sum(:grade)%>
+</div>
+
+<br>
+
+<%# table latest result%>
+<%# column_chart Result.group(:grade).group_by_week(:created_at).count(:classes).first%>
+<%# table rends%>
+<%# line_chart Result.group(:classes).group_by_day(:created_at).sum(:grade)%>
+
+
+
+
+<!-------------------------------------------------------------------------------  Filters TABLE BEGIN------------------>      
+ 
+  <%# table of all the results for a particular student%>
+<% if @results.length == 0 %>
+                        <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h3 class="title">There are no results yet added for this student</h3>
+                                <h4><%= link_to 'Add A New Result', new_result_path %></h4>
+                                
+                            </div>
+                            </div>
+                            </div>
+<% else %>
+
+  
+   <tbody class="table-hover">
+<tr>
+</tr>
+</tbody>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Filter Table</h4>
+                                <p class="category">This table is filtered by the surname or email</p>
+                             
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+
+
+
+  <thead>
+    <tr>
+      <th>Date time</th>
+      <th>Class</th>
+      <th>Teacher</th>
+      <th>Grade 1-100</th>
+      <!--
+      <th>Student's Email</th>
+      <th>Parent's Email</th>
+      -->
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result.date_time.strftime("%d/%m/%Y at %H:%M") %></td>
+        <td><%= result.classes %></td>
+        <td><%= result.teacher %></td>
+        <td><%= result.grade %></td>
+        <!--
+        <td><%# result.email %></td>
+        <td><%# result.parent_email %></td>
+        -->
+        <td><%= result.comment %></td>
+         <td><%= link_to 'Show', result %></td>
+        <td><%= link_to 'Edit', edit_result_path(result) %></td>
+        <td><%= link_to 'Destroy', result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+
+</div>
+</div>
+</div>    
+
+
+  </div>
+
+                        </div>
+                    </div>
+    
+    
+    
+          <!-------------------------------------------------------------------------------  Filter TABLE END------------------>   
+
+

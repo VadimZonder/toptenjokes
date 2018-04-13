@@ -1,29 +1,82 @@
 <p id="notice"><%= notice %></p>
+ <%= render 'layouts/header' %>
+    
+   <tbody class="table-hover">
+<tr>
+</tr>
+</tbody>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">All Current Filters</h4>
+                                <p class="category">Edit Here</p><br>
+                                <p> <%= link_to 'New Lfilter', new_lfilter_path %></p>
 
-<h1>Listing Lfilters</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Lfilter</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                         </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                          <!--<th>School/Surname/Email</th>-->
+                                          <th>Filter by</th>
+                                          <th class="text-left">Edit/Delete</th>
+                                    </thead>
+                                    
 
-  <tbody>
-    <% @lfilters.each do |lfilter| %>
+
+                                     
+<% if @lfilters.length == 0 %>
+                        <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h3 class="title">There are no matches in this filter (add a filter first to see resutls if student exist in the database)</h3>
+                                <p><%= link_to 'Add a Student Filter', new_lfilter_path %> </p>
+                            </div>
+                            </div>
+                            </div>
+<% end %>
+
+
+                                      <tbody>
+
+                                   
+                                    
+                                       <tr>   
+                                        <!--ADD IF NO PFILTERS to display no filters result-->
+                                        <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
+                                 <% @lfilters.each do |lfilter| %>
       <tr>
         <td><%= lfilter.lfilter %></td>
-        <td><%= lfilter.email %></td>
-        <td><%= link_to 'Show', lfilter %></td>
-        <td><%= link_to 'Edit', edit_lfilter_path(lfilter) %></td>
-        <td><%= link_to 'Destroy', lfilter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', lfilter, method: :delete, data: { confirm: 'Are you sure?' } %></td> <!-- do not need the show <%# link_to 'Show', lfilter %>/<%= link_to 'Edit', edit_lfilter_path(lfilter) %>/-->
       </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Lfilter', new_lfilter_path %>
+        </td>
+                                          </tr>
+                                     
+                                      <%end%>
+                                  
+                                     
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+
+                </div>
+            </div>
+        </div>
+
+                     <!-------------------------------------------------------------------------------  Filter TABLE END------------------>   
+
+
+
+ <%= render 'layouts/footer' %>
+
+

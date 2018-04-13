@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Principal/Admin</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%="Welcome to eJournal Principal/Admin" %>
+<br />
+
+ <br />
+<%# use render this is acopy paste%>
+<br/>
+   <%= render 'layouts/header' %> 
+ <br />
+ <%# e.g .Count to 10 %>
+    <%= "You are loged in as:  #{@user_message}" %>
+<br />
+
+
+<br />
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%="Welcome to eJournal Sample" %>
+<br />
+ <%= "Message from controller : #{@controller_message}" %>
+<%#(outputs message + the message of the instance var in the controller)Cannot send data from views to controllers %>
+
+<%# link_to("Go to Index", {:controller => 'welcome', :action => 'index'}) %>
+
+<%# link_to("I am parent", {:controller => 'users', :action => 'parent'}) %>
+	
+ <%#  :controller => 'welcome',    code is inside sample and we’re going back to index no need) %>
+<%# To pass addition params in url add %>
+
+
+
+<%= yield %>
+
+</body>
+</html>

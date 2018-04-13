@@ -1,15 +1,36 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  
+  def login
+  end
+    
+    def admin_login
+        session[:login] = 1
+        session[:cart] = nil
+        flash[:notice] = "Admin Login sucessfull!!"
+        redirect_to :controller => :items
+        
+    end 
+    
+    def logout
+        session[:login] = nil
+        session[:cart] = nil
+        flash[:notice] = "You have been successfully logged out!!"
+        redirect_to :controller => :items
+        #do not forget to change this
+    end    
 
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+    
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    
   end
 
   # GET /users/new
@@ -19,6 +40,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+        #@user = current_user.email
+
   end
 
   # POST /users
@@ -28,11 +51,13 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        session[:user_id] = @user.id
+        format.html { redirect_to root_path} #, notice: 'User was successfully created.' 
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
+        
       end
     end
   end
@@ -42,7 +67,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to root_path} #, notice: 'User was successfully updated.' 
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -69,6 +94,41 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password_digest)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
     end
+    
+    
+    #(if from browser /users is called)
+def users
+  
+end
+
+
+
+#(if from browser /parent is called)
+def parent
+  
+@users_message = "I am a parent"
+end
+ #(when in views var will be called)
+
+#(if from browser /principal is called)
+def principal
+@user_message = "I am a princila/admin"
+end
+ #(when in views var will be called)
+
+ 
+ #(if from browser /teacher is called)
+def teacher
+
+@teacher_message = "I am a teacher"
+end
+ #(when in views var will be called)
+ 
+ #(if from browser /student is called)
+def student
+@user_message = "I am a student"
+end
+ #(when in views var will be called)
 end
