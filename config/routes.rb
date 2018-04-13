@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
 
+  resources :results
+  resources :lfilters
+  resources :pfilters
+  resources :users
   resources :students
-  devise_for :users
+  #devise_for :users
   #devise_for :users
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

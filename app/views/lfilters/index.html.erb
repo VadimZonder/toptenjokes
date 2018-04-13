@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lfilters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lfilter</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lfilters.each do |lfilter| %>
+      <tr>
+        <td><%= lfilter.lfilter %></td>
+        <td><%= lfilter.email %></td>
+        <td><%= link_to 'Show', lfilter %></td>
+        <td><%= link_to 'Edit', edit_lfilter_path(lfilter) %></td>
+        <td><%= link_to 'Destroy', lfilter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lfilter', new_lfilter_path %>

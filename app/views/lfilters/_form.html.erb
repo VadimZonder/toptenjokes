@@ -1,0 +1,25 @@
+<%= form_for(@lfilter) do |f| %>
+  <% if @lfilter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lfilter.errors.count, "error") %> prohibited this lfilter from being saved:</h2>
+
+      <ul>
+      <% @lfilter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lfilter %><br>
+    <%= f.text_field :lfilter %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
