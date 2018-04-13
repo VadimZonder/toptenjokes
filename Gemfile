@@ -7,7 +7,8 @@ gem 'rails', '4.2.5'
 #gem 'sqlite3', group: [:development, :test]
 	
 #postgres for production db
-gem 'pg', group: :production
+#postgres for production db
+gem 'pg', '0.20.0'
 
 gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
