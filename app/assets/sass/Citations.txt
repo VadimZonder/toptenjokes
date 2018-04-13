@@ -1,1 +1,0 @@
-All of the files in this SASS folder taen from opensource dahsboard template: https://www.creative-tim.com/product/light-bootstrap-dashboard#_=_
