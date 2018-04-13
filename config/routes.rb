@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get 'page/index'
     # You can have the root of your site routed with "root"
   #ROOT PAGE IS THE STATI_COTROLLER'S INDEX METHOD WHICH WILL BE RENDERED IN VIEWS
-   root 'static_pages#index'
+   root 'static_pages#home'
  
   
   #devise_for :users, path: 'users'
