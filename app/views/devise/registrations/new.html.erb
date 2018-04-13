@@ -1,0 +1,88 @@
+ <%= render 'layouts/header' %>
+
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h4 class="title">Add A New Filter</h4>
+                                <p class="category">Parents Only</p>
+                                </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover">
+                                  
+                              <tbody>     
+                                    <%= form_for(@lfilter) do |f| %>
+  <% if @lfilter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lfilter.errors.count, "error") %> prohibited this lfilter from being saved:</h2>
+
+      <ul>
+      <% @lfilter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<tbody>
+
+    <div class="field">
+     <tr>
+<th> <div class="field"><%= f.label :lfilter %><br><p><%= f.text_field :lfilter %><br> </div><%= f.label :email %><br><p><%= f.text_field :email %><br> <div class="actions"> <%= f.submit %></div>   </p></th>
+</tr> 
+  </div>   
+ 
+
+<% end %>
+     <div class="field">
+     <tr>
+<th> <p><%= link_to("Back", {:controller => 'parents', :action => 'index'}) %></p></th>
+</tr> 
+  </div> 
+
+</tbody> 
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                                 </div>
+                        </div>
+                    </div>
+ <%= render 'layouts/footer' %>
+
+
+
+
+<%#############################################################################################%>
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

@@ -1,0 +1,7 @@
+<%= form_tag("/parent_search" , :method => "post") do %>
+
+<%= label_tag("Parental Search:")  %>
+<%= link_to image_tag("Icons/search_icon.png",alt:"Search Icon", class:"icons",id:"search_icon") %>
+<%= text_field_tag(:q) %>
+<%= submit_tag("Search") %>
+<% end %>
