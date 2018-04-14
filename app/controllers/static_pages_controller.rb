@@ -1,7 +1,7 @@
 class StaticPagesController < ActionController::Base
 
   #if index is requeste from the browser and it is routed in routs it will run index in views
-
+#
   def home
     # def current_user
     if session[:user_id]  != nil
