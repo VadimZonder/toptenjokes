@@ -1,0 +1,21 @@
+<h1>Personal Filters Parents</h1>
+<br>
+<table class="filters">
+<%= link_to 'Edit Available Personal Filters', lfilters_path %>
+  
+  <% @lfilters.each do |lfilter| %>
+      <tr>
+        <td>
+          
+          <div class="filters">
+               
+           
+           <p><%= lfilter.lfilter %></p>
+           
+           <a href="/lfilter/<%= lfilter.lfilter %>"><%= lfilter.lfilter %></a>
+          </div>
+        
+        </td>
+      </tr>
+    <% end %>
+</table>

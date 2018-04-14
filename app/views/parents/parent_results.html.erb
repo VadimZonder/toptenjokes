@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+<h1>Listing Results for Parents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date time</th>
+      <th>Classes</th>
+      <th>Teacher</th>
+      <th>Grade</th>
+      <th>Email</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result.date_time %></td>
+        <td><%= result.classes %></td>
+        <td><%= result.teacher %></td>
+        <td><%= result.grade %></td>
+        <td><%= result.email %><%= link_to("Results", {:controller => 'parents', :action => 'parent_result', :id =>  result.email}) %>
+</td>
+        <td><%= result.comment %></td>
+     </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Result', new_result_path %>

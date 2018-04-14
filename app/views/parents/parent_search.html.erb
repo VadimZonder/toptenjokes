@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Search Results</title>
+	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+</head>
+
+<body>
+<h2>Search by Surname <%= @search_term %> </h2>
+<body>
+<% if @students.length ==0 %>
+
+<br>
+
+<p>No student are with that name in the Database. Make sure your spelling is correct and if so then just make if logged in <%= link_to 'add a new student', new_student_path %>. </p>
+
+<% end %>
+
+ 
+<div class="table-title">
+<h3>Students Table</h3>
+</div>
+<table class="table-fill">
+ 
+<thead>
+<tr>
+<th class="text-left">Name</th>
+<th class="text-left">Date of Birth</th>
+<th class="text-left">School</th>
+<th class="text-left">Email</th>
+<th class="text-left">Comment</th>
+<th class="text-left">Results</th>
+
+</tr>
+</thead>
+<tbody class="table-hover">
+    <% @students.each do |student| %>
+<tr>                                      
+<td class="text-left"><%= student.name%><%= student.surname  %></td>
+<td class="text-left"><%= "#{student.day_of_birth} /" %>  
+            <%= "#{student.month_of_birth} /"%>
+            <%= student.year_of_birth %></td>
+<td class="text-left"> <%= student.school %></td>
+<td class="text-left"> <%= student.comment %></td>
+<td class="text-left"><%= student.email %><%= link_to("Results", {:controller => 'results', :action => 'index', :id =>  student.email}) %>
+           
+</tr>
+<tr>
+
+</tr>
+
+</tbody>
+
+ <% end %>
+</table>
+  
+
+  </body>
+
+
+

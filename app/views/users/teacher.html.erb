@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teacher</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%="Welcome to eJournal Teacher" %>
+<br />
+<br />
+<% if current_user %>
+  <strong>have here a link to info for prents Welcome</strong>
+  <%= link_to "Logout", logout_path, method: :delete %>
+  
+  <%= link_to("SEE Your Student link to students index", {:controller => 'students', :action => 'index'}) %>
+<% else %>
+  <strong>Welcome Guest!</strong>
+  <%= link_to "Login", login_path %> or
+  <%= link_to "Register", signup_path %>
+    <%=link_to "You need to register/login in order to SEE Your Student", login_path %>
+<% end %>
+ <br />
+  <%= @teacher_message%>
+<%# use render this is acopy paste%>
+<br/>
+   <%= render 'layouts/header' %> 
+ <br />
+ <%# e.g .Count to 10 %>
+    <%= "You are loged in as a:  #{@teacher_message}" %>
+    
+  
+   
+<br />
+
+
+<br />
+
+
+<%= yield %>
+
+</body>
+</html>

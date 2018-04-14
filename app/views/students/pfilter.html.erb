@@ -1,0 +1,68 @@
+<h1>Personal Filter (views/students/pfilter.html.erb)</h1>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Categories Filter</title>
+	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+</head>
+
+
+   <br/>
+
+<% if @students.length == 0 %>
+<!--empty filter error--->
+  <div id="empty" >
+    <h2>We are sorry, 
+    <br><br>
+    there are no students
+    <br><br>
+    in this filter</h2>  
+  </div>
+<% end %>
+
+<div class="table-title">
+<h3>Students Table</h3>
+</div>
+<table class="table-fill">
+ 
+<thead>
+<tr>
+     <%= link_to 'New Student', new_student_path %>
+<th class="text-left">Name</th>
+<th class="text-left">Date of Birth</th>
+<th class="text-left">School</th>
+<th class="text-left">Email</th>
+<th class="text-left">Comment</th>
+<th class="text-left">Edit/Destroy/Add</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+    <% @students.each do |student| %>
+<tr>                                      
+<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %></td>
+<td class="text-left"><%= "#{student.day_of_birth} /" %>  
+            <%= "#{student.month_of_birth} /"%>
+            <%= student.year_of_birth %></td>
+<td class="text-left"> <%= student.school %></td>
+<td class="text-left"> <%= student.email %><%= link_to("Results", {:controller => 'results', :action => 'index', :id =>  student.email}) %>
+</td>
+<td class="text-left"> <%= student.comment %></td>
+<td class="text-left"> <% if user_signed_in? %>
+              <%= link_to 'Edit', edit_student_path(student) %>
+              <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
+               <%else%>
+            <%end%> </td>
+            
+           
+</tr>
+<tr>
+
+</tr>
+
+</tbody>
+
+ <% end %>
+</table>
+  
+
+  </body>

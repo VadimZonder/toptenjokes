@@ -1,0 +1,21 @@
+<%= form_for(@parent_filter) do |f| %>
+  <% if @parent_filter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parent_filter.errors.count, "error") %> prohibited this parent_filter from being saved:</h2>
+
+      <ul>
+      <% @parent_filter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :filter %><br>
+    <%= f.text_field :filter %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
