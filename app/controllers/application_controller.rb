@@ -10,10 +10,10 @@ private
     end
   end
 
-   def current_user
-    User.where(id: session[:user_id]).first
-   end
-  
+   #def current_user
+   # User.where(id: session[:user_id]).first
+   #end
+
   
 
   
@@ -22,7 +22,7 @@ private
   protect_from_forgery with: :exception
   private
   def current_user
-    User.where(id: session[:user_id]).first
+    User.find_by(id: session[:user_id])
   end
   helper_method :current_user
 end

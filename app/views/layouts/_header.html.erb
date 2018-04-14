@@ -90,8 +90,7 @@
                     <% link_to "Home", root_path%>
                     </a>
  <!-------------------------------------------------------------------------------  END  headers-->                
-                 
-                     <a class="navbar-brand" href="#">
+                   <a class="navbar-brand" href="#">
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -127,15 +126,102 @@
                     </ul>
                 
                    <ul class="nav navbar-nav navbar-right">
+                     <%# if current_user %>  
+                     <% if @sign_in %>  
+                     <!--USER name + surename ----------------------------------------------------------------------------------------->
+                     <!--add if loged in user if not loged in login/signup-->
+                     <li>
+                     
+                     <%#displaying current user and once clicked redirecting to editing that user%>
+<%#!!!!!!!!!!!!!!!!!!!!!chang eon deployment!!!!!!!!%>
+               
+                         <%=link_to "Welcome:   #{@user_name}", "https://deploy-vadimmalakhovski.c9users.io/users/#{@user_id}/edit" %>  <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
+               <%#= "name #{@user_name}" %>  
+               <%#= "email #{@user_email}" %> 
+               <%#= "id #{@user_id}"  %> 
                     
+                      </li>
+               
+                      <!--USER name + surename END----------------------------------------------------------------------------------------->
                       
+                       <!-- delete on completion
+                        <li>
+                           <a href="">
+                               <p>Account</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+										Dropdown
+										<b class="caret"></b>
+									</p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                        -->
+                         
+                          
+                     
+                       
+                         <li>  
+                            <a href="logout">
+                 
+                 <%= "Log Out"%>
+                 <% link_to "Log Out", logout_path  %>
+                 </a>
+                </li> 
+          <% else %> 
+         
+               <li>  
+                 <li> 
+                     <a href="signup"> 
+                 
+                      <%="Register"%>
+                      <% link_to 'Register', signup_path %>
+                      </a>
+                      </li> 
+                      
+                      <li> 
+                      <a>or</a>
+                      </li> 
+                        
+                          <li> 
+                    <a href="login">  
+                    
+                     <%="Login"%>
+                     <%link_to 'Login', login_path %>
+                     </a>
+                      </li>   
+                   </li>  
+              
+           
+         
+                 
+          <%end %>
+
+
+
+                               <!-- <p>Log out</p>             </li>-->
+                           
+                      
+                 
+                  
 						<li class="separator hidden-lg"></li>
                     </ul>
                 </div>
             </div>
-        </nav>
-
-  
+</nav>
+      
 <!--
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -151,19 +237,28 @@
   </div>
 </div>
 <!-- add _name.html.erb and then can render in another vews html.erb file + can be rendered on multiple pages to maintain DRY principle
-<div id='header'>
+ <div id='header'>
 </div>
 <div id='menu'>
     <div id='navbar'>
          <ul>
-            <li><%# link_to "Home",   root_path %></li>
-             <li><%# link_to "Post", posts_path %></li>
+            <li><%#link_to "Home",   root_path %></li>
+           
             <li><%# link_to "Help",   help_path %></li>
             <li><%# link_to "About",  about_path %></li>
             <li><%# link_to "Log in", admin_path %></li>
-            <li><%# link_to "Signup", signup_path %></li>
-            <li><%# link_to "Log in", login_path %></li>
-            <li><%# link_to "Log Out", logout_path %></li>
+            <li><%# @usr%></li>
+                        <li><%#= @usr2%></li>
+                         <li><%#= @usr3%></li>
+                         <li><%# if @sign_in == true %>
+                         <%#= "loged in"%>
+                         <%#else %>
+                         <%#= "loged out"%></li>
+                         <%#end %>
+                         <li><%# current_user%></li>
+            <li><%#= link_to "Signup", signup_path %></li>
+            <li><%#= link_to "Log in", login_path %></li>
+            <li><%#= link_to "Log Out", logout_path %></li>
             <li><%# link_to "___THIS IS FROM DEVISE___"%></li>
             
             <%# if current_user %>
@@ -174,7 +269,8 @@
 
          </ul>      
     </div>
-</div>
+</div> 
+                      
 -->
 
 

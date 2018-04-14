@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
  # skip_before_filter :login_first
 #when login link is pressed the new method is triggered
   def new
+   # @user = User.find params[:id]
       
   end
   
@@ -17,9 +18,11 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_url #, notice: 'Logged in!'
+
+      redirect_to root_url , notice: 'Logged in!'
  
     else
+
      #flash.keep[:notice]="This message will persist"
       #redirect_to login_url, notice: 'Logged in!'
     #flash[:notice] = 'Please make alsways sure that the login details are correct'
@@ -34,8 +37,9 @@ class SessionsController < ApplicationController
     end
   end
   def destroy
+
     session[:user_id] = nil
-    redirect_to root_url #, notice: 'Logged out!'
+    redirect_to root_url , notice: 'Logged out!'
   end
   
   
