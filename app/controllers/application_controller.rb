@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
 #a limiter to redirect a user to login page if one is trying to acces protected pages unless login or registration is clicked themselves  
 before_filter :login_first, :except => [:new,:create]
 
+
+
 #method to redirect a user to login  page
 private
   def login_first

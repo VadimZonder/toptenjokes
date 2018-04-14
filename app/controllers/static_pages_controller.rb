@@ -1,17 +1,14 @@
 class StaticPagesController < ActionController::Base
 
+
+include UsersHelper
+
+   
   #if index is requeste from the browser and it is routed in routs it will run index in views
-#
+
   def home
-    # def current_user
-    if session[:user_id]  != nil
-     @sign_in =true
-     @user_name = User.where(id: session[:user_id]).first
-     @user_email = User.find_by(id: session[:user_id]).email
-     @user_id= User.find_by_email(@user_email).id
-    else 
-    @sign_in=false
-    
+
+  
     
    
    #def current_user
@@ -25,7 +22,7 @@ class StaticPagesController < ActionController::Base
  # @usr3 = User.find_by(id: session[:user_id]).email
  
     
-   end
+   
    
   
    @time = Time.now.strftime("%B %e, %Y at %I:%M %p")

@@ -124,10 +124,19 @@
                             </a>
                         </li>
                     </ul>
-                
+                 
+ 
                    <ul class="nav navbar-nav navbar-right">
-                     <%# if current_user %>  
-                     <% if @sign_in %>  
+                  
+                     <% if current_user%> 
+                   
+              <%#= "name #{@user_name}" %>  
+               <%#= "email #{@user_email}" %> 
+               <%#= "id #{@user_id}"  %> 
+            
+              
+               
+        
                      <!--USER name + surename ----------------------------------------------------------------------------------------->
                      <!--add if loged in user if not loged in login/signup-->
                      <li>
@@ -135,12 +144,8 @@
                      <%#displaying current user and once clicked redirecting to editing that user%>
 <%#!!!!!!!!!!!!!!!!!!!!!chang eon deployment!!!!!!!!%>
                
-                         <%#=link_to "Welcome:   #{@user_name}", "https://deploy-vadimmalakhovski.c9users.io/users/#{@user_id}/edit" %>  <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
-               <%#change on deployment to the code below%>
-               <%=link_to "Welcome:   #{@user_name}", "https://e-school-j.herokuapp.com/users/#{@user_id}/edit" %> 
-               <%#= "name #{@user_name}" %>  
-               <%#= "email #{@user_email}" %> 
-               <%#= "id #{@user_id}"  %> 
+                         <%=link_to "Welcome:   #{@user_name}", "https://deploy-vadimmalakhovski.c9users.io/users/#{@user_id}/edit" %>  <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
+           
                     
                       </li>
                
@@ -183,6 +188,9 @@
                  </a>
                 </li> 
           <% else %> 
+            <%#= "sign #{@sign_in}"  %> 
+               <%#= "helper sign out #{full_name(@helper) }"  %>        
+                        
          
                <li>  
                  <li> 
@@ -210,9 +218,6 @@
          
                  
           <%end %>
-
-
-
                                <!-- <p>Log out</p>             </li>-->
                            
                       
