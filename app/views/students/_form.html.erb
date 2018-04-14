@@ -1,73 +1,45 @@
- <%= render 'layouts/header' %>
+<%= form_for(@student) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
 
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="header">
-          <h4 class="title">Create A New Student</h4>
-            <p class="category">Teachers Only</p>
-        </div>
-                        
-
-        <%= form_for(@student) do |f| %>
-          <% if @student.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
-              <ul>
-                <% @student.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %>
-        
-          <div class="field">
-            <%= f.label :name %><br>
-            <%= f.text_field :name, required: true  %>
-          </div>
-          <div class="field">
-            <%= f.label :surname %><br>
-            <%= f.text_field :surname, required: true  %>
-          </div>
-          <div class="field">
-            <%= f.label :day_of_birth %><br>
-            <%= f.number_field :day_of_birth, required: false %>
-          </div>
-          <div class="field">
-            <%= f.label :month_of_birth %><br>
-            <%= f.number_field :month_of_birth, required: false %>
-          </div>
-          <div class="field">
-            <%= f.label :year_of_birth %><br>
-            <%= f.number_field :year_of_birth, required: false %>
-          </div>
-          <div class="field">
-            <%= f.label :school %><br>
-            <%= f.text_field :school, required: true %>
-          </div>
-          <div class="field">
-            <%= f.label :email,"Student's Email" %><br>
-            <%= f.text_field :email, required: true%>
-          </div>
-          <div class="field">
-            <%= f.label :comment,"General Comment (Optional)" %><br>
-            <%= f.text_field :comment, required: false  %>
-          </div>
-          <div class="actions">
-            <%= f.submit 'Create', class: "btn purple-button"%>
-          </div>
-        <% end %>
-        
-          <div class="field">
-            <tr>
-            <th> <p><%= link_to("Back", {:controller => 'students', :action => 'index'}) %></p></th>
-            </tr> 
-          </div> 
-        
-      </div>
-     </div>
+      <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
     </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
   </div>
-</div>
-<%= render 'layouts/footer' %>
+  <div class="field">
+    <%= f.label :surname %><br>
+    <%= f.text_field :surname %>
+  </div>
+  <div class="field">
+    <%= f.label :day_of_birth %><br>
+    <%= f.number_field :day_of_birth %>
+  </div>
+  <div class="field">
+    <%= f.label :month_of_birth %><br>
+    <%= f.number_field :month_of_birth %>
+  </div>
+  <div class="field">
+    <%= f.label :year_of_birth %><br>
+    <%= f.number_field :year_of_birth %>
+  </div>
+  <div class="field">
+    <%= f.label :school %><br>
+    <%= f.text_field :school %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_field :comment %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

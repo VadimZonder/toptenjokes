@@ -1,263 +1,39 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-	<title>Teacher/Student Table</title>
+<p id="notice"><%= notice %></p>
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+<h1>Listing Students</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Day of birth</th>
+      <th>Month of birth</th>
+      <th>Year of birth</th>
+      <th>School</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-    <!-- Bootstrap core CSS     -->
-    <link href="assets/stylesheets/bootstrap.min.css" rel="stylesheet" />
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.surname %></td>
+        <td><%= student.day_of_birth %></td>
+        <td><%= student.month_of_birth %></td>
+        <td><%= student.year_of_birth %></td>
+        <td><%= student.school %></td>
+        <td><%= student.comment %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-    <!-- Animation library for notifications   -->
-    <link href="assets/stylesheets/animate.min.css" rel="stylesheet"/>
+<br>
 
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="assets/stylesheets/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
-
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/stylesheets/demo.css" rel="stylesheet" />
-
-
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="assets/stylesheets/pe-icon-7-stroke.css" rel="stylesheet" />
-</head>
-<body>
-
- <%= render 'layouts/header' %>
- <p id="notice"><%= notice %></p>
-<!-------------------------------------------------------------------------------  Filters TABLE BEGIN------------------>   
-<tbody class="table-hover">
-<tr>
-</tr>
-</tbody>
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Filter Table</h4>
-                                <p class="category">This table is filtered by the school,surname or email</p><br>
-                                <p><%= link_to 'Add a Student Filter', new_pfilter_path, class: "btn purple-button" %> </p>
-                                     <p style="margin-bottom:1.5%;"><%= render 'layouts/search' %></p>
-
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
-                                    <thead>
-                                          <!--<th>School/Surname/Email</th>-->
-                                          <th>Filter Keywords</th>
-                                          <th class="text-left">Edit/Delete</th>
-                                    </thead>
-                                     
- <!--ROW 1 -->
-<!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
-<!-- check for 0 filters -->
-<!-- !!!!!Some of th eheaders need to be rendered before the chekc so that the code does no repeat -->
-<% if @pfilters.length == 0 %>
-                        <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h3 class="title">There are no matches in this filter (add a filter first to see resutls if student exist in the database)</h3><br>
-                                <p><%= link_to 'Add a Student Filter', new_pfilter_path, class: "btn purple-button" %> </p>
-                            </div>
-                            </div>
-                            </div>
-<% end %>
-                                    <tbody>
-                                        
-                                       <tr>   
-                                        <!--ADD IF NO PFILTERS to display no filters result-->
-                                        <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
-                                        <!-- this should nave ELSE here from if filters==0-->
-                                      
-                                         <% @pfilters.each do |pfilter| %>
-                                          <tr>
-                                            <td><%= pfilter.pfilter %></td>
-                                            <!--<td><%# pfilter.email %></td>-->
-                                            <td><% if user_signed_in? %>
-                                                    <%#link_to 'Show', pfilter %> 
-                                                    <%= link_to 'Edit', edit_pfilter_path(pfilter) %> /
-                                                    <%= link_to 'Delete', pfilter, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                                <%else%>
-                                                <%end%>
-                                                </td>
-                                          </tr>
-                                     
-                                   
-                                     <% end %>
-                                     
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-                     <!-------------------------------------------------------------------------------  Filter TABLE END------------------>   
-
-
- <!------------------------------------------------------------------------------- All Students TABLE BEGIN------------------>   
-
-
-
-
-                    <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h4 class="title">ALL Students By Filters Table</h4>
-                                <p class="category">Evaluate Your Student </p><br>
-                                <p class="category"><%= link_to ' ADD a New Student', new_student_path, class: "btn purple-button" %></p>
-                                
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover">
-                                    <thead>
-                                            <th class="text-left">Name</th>
-                                        <th class="text-center">Date of Birth</th>
-                                        <th class="text-center">School</th>
-                                        <th class="text-center">Email</th>
-                                        <th class="text-center">Results</th>
-                                        <th class="text-center">Comment</th>
-                                        <th class="text-center">Edit/Delete</th>
-                                    </thead>
-                        
-
-                                    
-                                     <!--ROW 1 -->
-<!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
-<!--    -->
-<% if @students.length == 0 || @pfilters.length == 0 %>
-                <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h3 class="title">There are no resutls for the student/s you are looking for by what you are filtering (the student or/and the filter does not exist yet). Add a filter first and if same message appears then add a student)</h3>
-                                <br><p><%= link_to ' ADD a New Student', new_student_path, class: "btn purple-button" %> </p>
-                            </div>
-                            </div>
-                            </div>
-<% end %>
-
-                                    <tbody>
-                                        
-                                         <tr>
-                                             <!--ADD IF NO PFILTERS to display no filters result-->
-                                        <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
-                                      
-                                <% @pfilters.each do |pfilter| %>
-                                         <% @students.each do |student| %>
-<% if pfilter.pfilter.casecmp(student.surname) == 0 || pfilter.pfilter.casecmp(student.email) == 0 ||  pfilter.pfilter.casecmp(student.school) == 0%>
-                                          <tr>
-<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %></td>
-<td class="text-center"><%= "#{student.day_of_birth} /" %>  
-            <%= "#{student.month_of_birth} /"%>
-            <%= student.year_of_birth %></td>
-<td class="text-center"> <%= student.school %></td>
-<td class="text-center"> <%= student.email %></td>
-<td class="text-center"><%= link_to("Results", {:controller => 'results', :action => 'teacher_result', :id =>  student.email}) %>
-</td>
-<td class="text-center"> <%= student.comment %></td>
-<!--make the whole page not work if not signed in and delte this sing in-->
-<td  class="text-center"><% if user_signed_in? %>
-              <%= link_to 'Edit', edit_student_path(student) %>/
-              <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
-               <%else%>
-                 <% end %>                                </td>
-
- <% end %>
-
- <% end %>
-
-
-</tbody>
-
-
-        </td>
-                                          </tr>
-                                     
-                                      <%end%>
-                                  
-                                     
-                                </table>
-
-
-                </div>
-            </div>
-        </div>
-        
-        
- <!-------------------------------------------------------------------------------  All Students TABLE END------------------>       
-        
-
-
-                </div>
-            </div>
-        </div>
-
-
-    
-
- <%= render 'layouts/footer' %>
-
-
-    </div>
-</div>
-
-
-</body>
-
-    <!--   Core JS Files   -->
-    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-
-	<!--  Charts Plugin -->
-	<script src="assets/js/chartist.min.js"></script>
-
-    <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
-
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
-
-
-</html>
-
-
-
-
-
-
-<!--
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>Table Style</title>
-	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
-</head>
-
-<p id="notice"><%# notice %></p>
-
-<h1>students/index</h1>
-<body>
-    -->
-    
-
-
- <!-- </body>
-
-
+<%= link_to 'New Student', new_student_path %>

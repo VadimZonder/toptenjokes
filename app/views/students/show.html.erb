@@ -1,76 +1,39 @@
 <p id="notice"><%= notice %></p>
- <%= render 'layouts/header' %>
-<!-- or try id + send teh email and then filter all the results by that emil    , :id => @student.email-->
-<%#
-#@splitEmailF = @student.email.split("@").first
-#@splitEmailL = @student.email.split("@").last
-#@splitEmail=@splitEmailF+@splitEmail
-#you can try adding .last and do the two params so that to avoid matching email for 2 dif people%>
-<%#'the uri fom the method is' %>   <%# @splitEmail %> 
- <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Student Information Table</h4>
-                                <p class="category">View and Edit Student's Profile here</p> <br>
-                                <p><%= link_to("SEE Student's Results", {:controller => 'results', :action => 'teacher_result', :id =>  @student.email}, class: "btn purple-button") %></p>
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
-                                    <thead>
-                                       
-                                    	<th>Independent</th>
-                                    	<th>Dependent</th>
-                                    
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                        	<th>Name</th>
-                                    	    <th><p><%= @student.name %></p></th>
-                                        </tr>
-                                        <tr>
-                                        	<th>Surname</th>
-                                    	    <th> <p><%= @student.surname %></p></th>
-                                        </tr>
-                                        <tr>
-                                        	<th>Date of Birth</th>
-                                        	<th><p><%= @student.day_of_birth %>/<%= @student.month_of_birth %>/<%= @student.year_of_birth %></p></th>
 
-                                        </tr>
-                                        <tr>
-                                        	<th>School</th>
-                                    	    <th><p><%= @student.school %></p></th>
-                                        </tr>
-                                        <tr>
-                                        	<th>Student Email</th>
-                                    	    <th> <p><%= @student.email %></p></th>
-                                        </tr>
-                                        <tr>
-                                        	<th>General Comment</th>
-                                        	<th><p><%= @student.comment%></p></th>
+<p>
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
 
-                                        </tr>
-                                        <tr>
-                                        	<th>General Comment</th>
-                                        	<th><p><%= @student.comment%></p></th>
+<p>
+  <strong>Surname:</strong>
+  <%= @student.surname %>
+</p>
 
-                                        </tr>
-                                        <tr>
-                                        	<th><%= link_to 'Edit', edit_student_path(@student) %> |
-                                              <%= link_to 'Back', students_path %></th>
-                                        <th></th>
+<p>
+  <strong>Day of birth:</strong>
+  <%= @student.day_of_birth %>
+</p>
 
-                                        </tr>
-                                    </tbody>
-                                </table>
+<p>
+  <strong>Month of birth:</strong>
+  <%= @student.month_of_birth %>
+</p>
 
-                            </div>
-                        </div>
-                    </div>
-                    
-                                 </div>
-                        </div>
-                    </div>
- <%= render 'layouts/footer' %>
+<p>
+  <strong>Year of birth:</strong>
+  <%= @student.year_of_birth %>
+</p>
+
+<p>
+  <strong>School:</strong>
+  <%= @student.school %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @student.comment %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

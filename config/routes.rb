@@ -1,86 +1,10 @@
 Rails.application.routes.draw do
 
 
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  
-  resources :sessions, only: [:new, :create, :destroy]
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
-  get 'page/index'
-    # You can have the root of your site routed with "root"
-  #ROOT PAGE IS THE STATI_COTROLLER'S INDEX METHOD WHICH WILL BE RENDERED IN VIEWS
-   root 'static_pages#home'
- 
-  
-  #devise_for :users, path: 'users'
-# eg. http://localhost:3000/users/sign_in
-#devise_for :admins, path: 'admins'
-# eg. http://localhost:3000/admins/sign_in
-
-#devise_for :users, path: 'users', controllers: { sessions: "users/sessions" }
-#devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions" }
-
-#ROUTING BROWSER PATH REQUESTS TO THE CONTROLLERS AND THEIR METHODS FOR THE CONTROLLERS TO ACTIVATE VIEWS
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-
-   
-   #another page sample
-   #get 'static_pages/sample'
-   #match ':controller(/:action(/:id))', :via => :get
-   #rauting uri /sample to controller static_pages method sample
-   get '/sample' => 'static_pages#sample'
-   		#get 'welcome/index'
-		match ':controller(/:action(/:id))', :via => :get
-
-
-get '/teacher' => 'users#teacher'
-  get '/parent' => 'users#parent'
-		get '/principal' => 'users#principal'
-		  get '/teacher' => 'users#teacher'
-		get '/student' => 'users#student'
-
-
-#TRYING TO HAVE ONE VIEW OF USERS
-#get "/student", to: "users#users", as: "student"		
-# get "/teacher", to: "users#users", as: "teacher"
-#get '/parent' => 'users#users'
-#get '/principal' => 'users#users'
-	
-	 
-
-# get "/parent?"
-
-
-
-
-  resources :results
-  resources :lfilters
-  resources :pfilters
-  resources :users
   resources :students
+  devise_for :users
   #devise_for :users
-  #devise_for :users
-  #root 'welcome#index'
+  root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
