@@ -1,5 +1,5 @@
 module UsersHelper
-   
+  # 
 
    #my own current user method
    #in helper because I need to access it from different controllers and views
