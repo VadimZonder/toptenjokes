@@ -133,7 +133,7 @@ end
     respond_to do |format|
       if @result.save
 #change on deployment 
-
+                                  
         format.html { redirect_to "https://e-school-j.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
         format.json { render :show, status: :created, location: @result }
       else
