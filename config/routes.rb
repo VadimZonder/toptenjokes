@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :results
   resources :students
 resources :users
+
 
   get 'sessions/new'
 
