@@ -235,7 +235,8 @@
   #text_content = "very good student improved a lot since the beginning of the year Arthur began to misbehave in class still constantly disrupting the class"
   #reduce the code some of it here is not necessary I am just returning a number
   require "google/cloud/language"
-ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/ubuntu/workspace/workspace1/key.json"
+  #may need ot change on deployment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                          ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/ubuntu/workspace/key.json"
   language = Google::Cloud::Language.new
 
   response = language.analyze_sentiment content: text_content, type: :PLAIN_TEXT

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ejournal2-197916",
+  "private_key_id": "9ab242ca107e1f09be14f05474674581764d5409",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCkErrbdZjJPKQJ\nvjLAbHfqKiQzgKHvYUQZEoHKFvS4tj65qczL15NXR2/RVU5myGCaLiFLBgdmnhIO\nAqXPOjhTY6Z3y5atpDqjRg34QDYNG8C2Zf1yml880CrIvytAs+fDWGkglUUKCu6f\nsHSjzdI/i+peCfRo25iAShUOAGbSsYFgkFq4xnoXkM+WUxVtFqCcVg70Kp7T8bPy\nx0yENw8AjIfRf0PZ4G67EST2oHstX5OG9twhRrfgGk04JBOGhG/u6S3DugI/utxE\nhgYSieurwNqP6ikLVy2pwtORggRb171X8Gcj2COCESftMA1spHDXRRWx4qM/j+sp\nt2vRQET5AgMBAAECggEAB4LYcNP7zmOAhS7/M1lD3Bbnkc3MKj3xdM4owZb9qtRr\nPAfHhCHhODuoT+oauyz0SBOKU/mWA9DYRBVDZC7KWxp9bR4Vh5XtVp5jgVTJ3Y9Q\nzaVH3FzMX8s4u/hirdqAWI/qdz8sW/CrvFpto6hNmbnOsnGf/9+Pe3jovknLTs7A\n78dFmELFZdidkLPDg01AlbpG5GpB9lJPq42HEA/FMZyvwppo6uuQMxAbUwizwzMK\nHxWXz/yovEZhhmnwaTjpQIOVemI5ZkpunJxbnFRWkGo4vAH8lnPCApLTGhot9XEA\nPKPdymyjejQl8jdrP4oHlSmkzbSxb0irwxmS4eGNCQKBgQDTM4dAmsRjD5Tkuden\nki+Dni5Wxw9yn1OGp4KBPvgPQkK5Z9gUNd2ae2jBuMEO7m27o/0yHZR1cSYWMUic\nHSjdjMIe/nrlbm4U96JC4l43w88jS3gFG8mIZpOzAGMgbJhqK4WLbD8rkmfKrXT2\naXUIIGjU9GNOefshHWZitjieLwKBgQDG4Bc5mGlnF1KkFD+bI6GD2fqTcgwMDeAD\nHbwRC9D4wuMgSt0sMKB5ij7QiJkVVaFQjCL/6IDNkckwdIUQaHermC22wPLeH+jx\n2x0LnptxXNAmkjPblDR3w6wXtWYHZ/Nau1wbeqMtns2zZeqsFRIX8zlgQMEbNNuK\nVn5zND/tVwKBgGnrBqKUu3a+orpOpWOJgcCtPKoSbKHcW4RFT8LHtJnabiITfR8t\noHRP/cphgJifZHLdHCbdBM4dL6+jibmZOhxZ8iSfFT0os5ZaVoragcvPrHsT5x4Q\nwHJilyIHSK9DJvDf4Lp6T/fnFZxkfyrw2lt3/XsHESKTNCl4WBebMSvLAoGAdJAr\njKp0PORCn8DudvOvWySL5ZfWz8niHnFzJVqTpPo1PVwjvh7SL+qDXp5xezuxTRCW\nAwA3XkWwciIZS8CvQ3fyc0csEl0Jn5gZshHIce1AYxsWIgD/r6KUX2EG6BhZXjiq\nh8Cdm8OUNS3rGelPrZH1cyEBDf0xICgJ/WQGhAkCgYEAuWrhxW6ycfPENEOzzgaK\nTrRZK0V1ZPaN47UnUbKSXsUngKtrzEHl/JYv0Hg6ssL6/QkhR0Q0xzmuvh68rxY8\nwNTSZiNVjs5OtIcJ6QfJWVBeUnJsnqKhqGzQiSHaDJ5jBMcaj4yrow5PMH4os8cb\nXHsJ+YP50JPSXDl01S6Gbbw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "my-nl-sa@ejournal2-197916.iam.gserviceaccount.com",
+  "client_id": "117157557684859762600",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-nl-sa%40ejournal2-197916.iam.gserviceaccount.com"
+}

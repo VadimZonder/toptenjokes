@@ -11,12 +11,14 @@
                 <div class="container-fluid">
                     
                     <% if @results.length == 0 %>
-                        <h3 class="title">There are no results yet added for this student</h3>
+                    
+                        <h3 class="title text-warning">There are no results yet added for this student</h3>
                             <h5 class="category"><%= link_to 'Add A New Result', new_result_path, class: "btn purple-button"  %></h5>
                                 <br>
                                     <p><%= link_to("Back", students_url) %></p>
                 </div>
             </div>
+           
         </div>
                     <% else %>
                         <h2 class="title">Grades</h2>
@@ -173,8 +175,8 @@
                           require "google/cloud/language"
                           
                        
-                          #may need ot change on deployment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                          ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/ubuntu/workspace/workspace1/key.json"
+        #may need ot change on deployment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                          ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/ubuntu/workspace/key.json"
                           language = Google::Cloud::Language.new
                         
                           response = language.analyze_sentiment content: text_content, type: :PLAIN_TEXT
@@ -288,10 +290,11 @@
                                     </table>
                                 <% end %>
                             </div>
+                            
                     </div>
                                         
                                         
-                                    
+                              
  <!-------------------------------------------------------------------------------  Filter TABLE END------------------>   
 
 

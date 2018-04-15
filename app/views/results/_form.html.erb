@@ -15,8 +15,9 @@
           <h4 class="title">Create/Edit A Result</h4>
             <p class="category">Teachers Only</p>
             <br>
+           
         </div>
-                            
+
 
       <%= form_for(@result) do |f| %>
         <% if @result.errors.any? %>
@@ -49,7 +50,7 @@
           <%= f.label :teacher, "Teacher"  %><br>
           <!-- pre filling with teahcer's firstname and surname-->
           <!-- read only for the fist and last names to be visible but cannot be change to avoid mistakes-->
-          <%= f.text_field :teacher, :value => @user_first_name +" "+@user_last_name, required: true, :readonly => true  %>
+          <%= f.text_field :teacher, :value => @user_name, required: true, :readonly => true  %>
         </div>
         <div class="field">
           <%= f.label :grade %><br>
@@ -78,6 +79,9 @@
       
        <div class="field">
          <tr>
+<!-- deploy version
+ <th> <p><%#= link_to("Back", "https://e-school-j.herokuapp.com/results/teacher_result/#{$studentEmail}") %></p></th>
+       -->  
          <!-- changing the back button to lead back to a particular student's result-->      
           <th> <p><%= link_to("Back", "https://ejournal-reloaded-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}") %></p></th>
         </tr> 

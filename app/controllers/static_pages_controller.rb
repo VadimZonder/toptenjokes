@@ -10,7 +10,11 @@ include UsersHelper
   def home
 
   
-    
+       #getting a firstname and surname to prefill in the _form
+ # @user_first_name= current_user
+ # @user_last_name= current_user
+ # @user_email= current_user
+  #@user_id= current_user 
    
    #def current_user
    # User.where(id: session[:user_id]).first

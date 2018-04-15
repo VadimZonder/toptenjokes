@@ -1,4 +1,8 @@
 class ResultsController < ApplicationController
+  #include is inheritence to get the contents of the helper. 
+#This is to avoid writing repetative code and is therefore achieveing DRYness
+include UsersHelper
+
  #granting and limmiting access for different methods  
  before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_result, :update, :edit, :destroy]
   
@@ -99,8 +103,8 @@ end
     @user = current_user
       
     #getting a firstname and surname to prefill in the _form
-    @user_first_name= current_user.first_name
-    @user_last_name= current_user.last_name
+    @user_first_name= current_user
+ @user_last_name= current_user
     
     @result = Result.new
   end
@@ -111,8 +115,10 @@ end
     @user = current_user
       
     #getting a firstname and surname to prefill in the _form
-    @user_first_name= current_user.first_name
-    @user_last_name= current_user.last_name
+    #@user_first_name= current_user.first_name
+   # @user_last_name= current_user.last_name
+       @user_first_name= current_user
+ @user_last_name= current_user
     
     #finds the correct reuslt by id and stores into the result variable
     @result = Result.find(params[:id])
@@ -126,7 +132,8 @@ end
 
     respond_to do |format|
       if @result.save
-        format.html { redirect_to "https://ejournal-reloaded-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
+#change on deployment        
+        format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
         format.json { render :show, status: :created, location: @result }
       else
         format.html { render :new }
@@ -146,7 +153,7 @@ end
       if @result.update(result_params)
         #going back to teacher page with the right student open
         #eddit the uri on diployment
-        format.html { redirect_to "https://ejournal-reloaded-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully updated.' }
+        format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully updated.' }
         format.json { render :show, status: :ok, location: @result }
       else
         format.html { render :edit }
@@ -167,8 +174,8 @@ end
     respond_to do |format|
       #redirecing back to current student on delete
       #needed a global variable to communicate between methods
-      #change the link on deplyment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      format.html { redirect_to "https://ejournal-reloaded-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully destroyed.' }
+#change the link on deplyment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -182,7 +189,7 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def result_params
        #params.permit(:date_time, :classes, :teacher, :grade, :email, :parent_email, :behaviour,:comment)
-       params.require(:result).permit(:date_time, :classes, :teacher, :grade, :email, :parent_email, :behaviour,:comment)
+       params.require(:result).permit(:date_time, :classes, :teacher, :grade, :email,  :behaviour,:comment)
      
     end
 end

@@ -78,6 +78,7 @@ end
   # GET /students
   # GET /students.json
   def index
+    
     #calling all the addon functions
     #@pfilters = Pfilter.all
     @students = Student.all
@@ -111,11 +112,9 @@ end
   # GET /students/new
   def new
     #need to get the currnet user in order to display in the header
-  ###  @user = current_user
+  @user = current_user
       
-    #getting a firstname and surname to prefill in the _form
-  ###  @user_first_name= current_user.first_name
-  ###  @user_last_name= current_user.last_name
+
     
     @student = Student.new
   end

@@ -8,7 +8,6 @@
           <h4 class="title">Create A New Student</h4>
             <p class="category">Teachers Only</p>
         </div>
-                        
 
         <%= form_for(@student) do |f| %>
           <% if @student.errors.any? %>
@@ -69,5 +68,6 @@
      </div>
     </div>
   </div>
+  <%= render 'layouts/footer' %>
 </div>
-<%= render 'layouts/footer' %>
+
