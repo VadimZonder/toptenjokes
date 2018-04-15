@@ -70,10 +70,10 @@ def teacher_result
   
     #this code is to get back to an appriopriate place
     #geting the URI of the current page
-  #  $studentEmail = request.original_url
+    $studentEmail = request.original_url
     #geting the email of the current student being worked on
     #bu splittin the URI into an array and getting the last element which would be an email
- #   $studentEmail =  $studentEmail.split('/')[-1]
+    $studentEmail =  $studentEmail.split('/')[-1]
     
     
     
@@ -133,7 +133,7 @@ end
     respond_to do |format|
       if @result.save
 #change on deployment        
-        format.html { redirect_to students_url, notice: 'Result was successfully created.' }
+        format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
         format.json { render :show, status: :created, location: @result }
       else
         format.html { render :new }
@@ -153,7 +153,7 @@ end
       if @result.update(result_params)
         #going back to teacher page with the right student open
         #eddit the uri on diployment
-        format.html { redirect_to students_url, notice: 'Result was successfully updated.' }
+        format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully updated.' }
         format.json { render :show, status: :ok, location: @result }
       else
         format.html { render :edit }
@@ -175,7 +175,7 @@ end
       #redirecing back to current student on delete
       #needed a global variable to communicate between methods
 #change the link on deplyment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      format.html { redirect_to students_url, notice: 'Result was successfully destroyed.' }
+      format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
