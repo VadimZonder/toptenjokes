@@ -66,11 +66,11 @@
 <!-- check for 0 filters -->
 <!-- !!!!!Some of th eheaders need to be rendered before the chekc so that the code does no repeat -->
 <% if @pfilters.length == 0 %>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                         <div class="card card-plain">
                             <div class="header">
-                                <h3 class="title">There are no matches in this filter (add a filter first to see resutls if student exist in the database)</h3><br>
-                                <p><%= link_to 'Add a Student Filter', new_pfilter_path, class: "btn purple-button" %> </p>
+                                <h4 class="text-warning">There are no matches in this filter (add a filter first to see resutls if student exist in the database)</h4><br>
+                                
                             </div>
                             </div>
                             </div>
@@ -86,7 +86,7 @@
                                           <tr>
                                             <td><%= pfilter.pfilter %></td>
                                             <!--<td><%# pfilter.email %></td>-->
-                                            <td><% if user_signed_in? %>
+                                            <td><% if current_user %>
                                                     <%#link_to 'Show', pfilter %> 
                                                     <%= link_to 'Edit', edit_pfilter_path(pfilter) %> /
                                                     <%= link_to 'Delete', pfilter, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -137,11 +137,11 @@
 <!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
 <!--    -->
 <% if @students.length == 0 || @pfilters.length == 0 %>
-                <div class="col-md-12">
+                <div class="col-md-6">
                         <div class="card card-plain">
                             <div class="header">
-                                <h3 class="title">There are no resutls for the student/s you are looking for by what you are filtering (the student or/and the filter does not exist yet). Add a filter first and if same message appears then add a student)</h3>
-                                <br><p><%= link_to ' ADD a New Student', new_student_path, class: "btn purple-button" %> </p>
+                                <h4 class="text-warning">There are no resutls for the student/s you are looking for by what you are filtering (the student or/and the filter does not exist yet). Add a filter first and if same message appears then add a student)</h4>
+                                
                             </div>
                             </div>
                             </div>
@@ -167,7 +167,7 @@
 </td>
 <td class="text-center"> <%= student.comment %></td>
 <!--make the whole page not work if not signed in and delte this sing in-->
-<td  class="text-center"><% if user_signed_in? %>
+<td  class="text-center"><% if current_user %>
               <%= link_to 'Edit', edit_student_path(student) %>/
               <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
                <%else%>

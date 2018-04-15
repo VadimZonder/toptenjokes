@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :students
 resources :users
 
   get 'sessions/new'
@@ -77,7 +78,6 @@ get '/teacher' => 'users#teacher'
   resources :lfilters
   resources :pfilters
   resources :users
-  resources :students
   #devise_for :users
   #devise_for :users
   #root 'welcome#index'

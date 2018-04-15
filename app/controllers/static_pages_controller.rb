@@ -1,6 +1,7 @@
 class StaticPagesController < ActionController::Base
 
-
+#include is inheritence to get the contents of the helper. 
+#This is to avoid writing repetative code and is therefore achieveing DRYness
 include UsersHelper
 
    

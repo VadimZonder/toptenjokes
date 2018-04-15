@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413175540) do
+ActiveRecord::Schema.define(version: 20180415091858) do
 
   create_table "lfilters", force: :cascade do |t|
     t.string   "lfilter"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20180413175540) do
     t.integer  "month_of_birth"
     t.integer  "year_of_birth"
     t.string   "school"
+    t.string   "email"
     t.string   "comment"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false

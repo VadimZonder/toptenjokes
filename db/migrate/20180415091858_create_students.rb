@@ -7,6 +7,7 @@ class CreateStudents < ActiveRecord::Migration
       t.integer :month_of_birth
       t.integer :year_of_birth
       t.string :school
+      t.string :email
       t.string :comment
 
       t.timestamps null: false

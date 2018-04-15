@@ -1,5 +1,8 @@
 class StudentsController < ApplicationController
-  
+#include is inheritence to get the contents of the helper. 
+#This is to avoid writing repetative code and is therefore achieveing DRYness
+include UsersHelper
+
   before_action :set_student, only: [:show, :edit, :update, :destroy], except: [:parent_filter]
   
   
@@ -21,7 +24,7 @@ class StudentsController < ApplicationController
 
 def search
       #need to get the currnet user in order to display in the header
-    @user = current_user
+   ###@user = current_user
     
   @search_term = params[:q]
  #@the search term is what will be presented in q
@@ -82,8 +85,8 @@ end
     
     ##Here we personalise filters so that each user will have their own unique filte
     #displaying currnet user
-    @user_email = current_user.email
-    @user = current_user
+  ###  @user_email = current_user.email
+ ###   @user = current_user
     #display the pfilters with the current user
     @pfilters= Pfilter.where("email like ? ", @user_email) 
     
@@ -97,22 +100,22 @@ end
   # GET /students/1.json
   def show
     #need to get the currnet user in order to display in the header
-    @user = current_user
+  ###  @user = current_user
       
     #getting a firstname and surname to prefill in the _form
-    @user_first_name= current_user.first_name
-    @user_last_name= current_user.last_name
+  ###  @user_first_name= current_user.first_name
+  ###  @user_last_name= current_user.last_name
       
   end
 
   # GET /students/new
   def new
     #need to get the currnet user in order to display in the header
-    @user = current_user
+  ###  @user = current_user
       
     #getting a firstname and surname to prefill in the _form
-    @user_first_name= current_user.first_name
-    @user_last_name= current_user.last_name
+  ###  @user_first_name= current_user.first_name
+  ###  @user_last_name= current_user.last_name
     
     @student = Student.new
   end
@@ -120,11 +123,11 @@ end
   # GET /students/1/edit
   def edit
     #need to get the currnet user in order to display in the header
-    @user = current_user
+  ###  @user = current_user
       
     #getting a firstname and surname to prefill in the _form
-    @user_first_name= current_user.first_name
-    @user_last_name= current_user.last_name
+  ###  @user_first_name= current_user.first_name
+  ###  @user_last_name= current_user.last_name
   end
 
   # POST /students
