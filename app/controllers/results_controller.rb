@@ -70,10 +70,10 @@ def teacher_result
   
     #this code is to get back to an appriopriate place
     #geting the URI of the current page
-    $studentEmail = request.original_url
+  #  $studentEmail = request.original_url
     #geting the email of the current student being worked on
     #bu splittin the URI into an array and getting the last element which would be an email
-    $studentEmail =  $studentEmail.split('/')[-1]
+ #   $studentEmail =  $studentEmail.split('/')[-1]
     
     
     
