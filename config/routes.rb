@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   resources :results
   resources :students
 resources :users
+resources :pfilters
+resources :lfilters
 
+post '/search' => 'students#search'
 
   get 'sessions/new'
 
@@ -74,12 +77,6 @@ get '/teacher' => 'users#teacher'
 # get "/parent?"
 
 
-
-
-  resources :results
-  resources :lfilters
-  resources :pfilters
-  resources :users
   #devise_for :users
   #devise_for :users
   #root 'welcome#index'

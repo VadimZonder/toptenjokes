@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= bootstrap.min
  
  @import 'bootstrap-sprockets';
 @import 'bootstrap';
@@ -52,6 +53,7 @@ if screen small then  position absolute
 
  }*/
 
+
 a{
      text-decoration: none;
   
@@ -71,6 +73,12 @@ a:active {
 .purple-button{
 
     border: 1px solid  #7625ff;
+}
+.purple-horizontal{
+
+    border-bottom-style:solid;
+   border-color:  #7625ff;
+   border-width: 1px;
 }
 .purple{
     color: #7625ff;

@@ -133,9 +133,9 @@ end
     respond_to do |format|
       if @result.save
 #change on deployment 
-#format.html { redirect_to "https://e-school-j.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
+#format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
         
-        format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
+        format.html { redirect_to "https://e-school-j.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
         format.json { render :show, status: :created, location: @result }
       else
         format.html { render :new }
@@ -157,7 +157,7 @@ end
         #eddit the uri on diployment
         #format.html { redirect_to "https://e-school-j.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
 
-        format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully updated.' }
+        format.html { redirect_to "https://e-school-j.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully updated.' }
         format.json { render :show, status: :ok, location: @result }
       else
         format.html { render :edit }
@@ -181,7 +181,7 @@ end
 #change the link on deplyment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #format.html { redirect_to "https://e-school-j.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
 
-      format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully destroyed.' }
+      format.html { redirect_to "https://e-school-j.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

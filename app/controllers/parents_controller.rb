@@ -2,7 +2,9 @@ class ParentsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
    before_action :set_student, only: [:show]
    before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_filter, :index]
-   
+ #include is inheritence to get the contents of the helper. 
+#This is to avoid writing repetative code and is therefore achieveing DRYness
+include UsersHelper  
 
 
 def lfilter
@@ -123,7 +125,7 @@ def index
     #user to be accessable on all of the pages
     @user = current_user
     #user_email for search purposes
-    @user_email = current_user.email
+    #@user_email = current_user.email
     #display the pfilters with the current user
     @lfilters= Lfilter.where("email like ? ", @user_email)  
 
