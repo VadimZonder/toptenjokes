@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 before_filter :login_first, :except => [:new,:create]
 
 
-
+#
 #method to redirect a user to login  page
 private
   def login_first
