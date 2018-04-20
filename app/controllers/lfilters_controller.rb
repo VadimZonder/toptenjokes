@@ -31,7 +31,7 @@ class LfiltersController < ApplicationController
 
     respond_to do |format|
       if @lfilter.save
-        format.html { redirect_to @lfilter, notice: 'Lfilter was successfully created.' }
+        format.html { redirect_to parents_url, notice: 'Filter was successfully created.' }
         format.json { render :show, status: :created, location: @lfilter }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class LfiltersController < ApplicationController
   def update
     respond_to do |format|
       if @lfilter.update(lfilter_params)
-        format.html { redirect_to @lfilter, notice: 'Lfilter was successfully updated.' }
+        format.html { redirect_to parents_url, notice: 'Filter was successfully updated.' }
         format.json { render :show, status: :ok, location: @lfilter }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class LfiltersController < ApplicationController
   def destroy
     @lfilter.destroy
     respond_to do |format|
-      format.html { redirect_to lfilters_url, notice: 'Lfilter was successfully destroyed.' }
+      format.html { redirect_to parents_url, notice: 'Filter was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
