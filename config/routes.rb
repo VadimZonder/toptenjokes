@@ -36,7 +36,7 @@ post '/search' => 'students#search'
   #ROOT PAGE IS THE STATI_COTROLLER'S INDEX METHOD WHICH WILL BE RENDERED IN VIEWS
    root 'static_pages#home'
  
-  
+  #
   #devise_for :users, path: 'users'
 # eg. http://localhost:3000/users/sign_in
 #devise_for :admins, path: 'admins'
