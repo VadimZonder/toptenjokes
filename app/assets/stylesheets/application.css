@@ -17,7 +17,6 @@
  @import 'bootstrap-sprockets';
 @import 'bootstrap';
 */
-
 /*
 .divider{
     width:5px;
@@ -46,29 +45,14 @@ if screen small then  position absolute
     right: 0;
     bottom: 0;
  }
-.button_with_image_save {
-    background: url(../images/Icons/parents32.png) #f2efa8 no-repeat 10px 6px;
-    text-indent:30px;
-    display:block;
-    cursor: pointer;
-}
+
  /*
 .filters{
         position: absolute;
     margin-left: 450px;
-
  }*/
 
-span{
-        font-family: verdana, arial, helvetica, sans-serif;
-            margin: 0;
-    
-    font-weight: 600;
-    line-height: 30px;
-    font-size: 12px; 
-    text-transform: uppercase;
-    margin-left: 5px;
-}
+
 a{
      text-decoration: none;
   
@@ -85,16 +69,12 @@ a:active {
     margin-bottom:0.4%;
 }
 
-.header_icons{
-    padding-right: 20px;
-}
-
 .purple-button{
 
     border: 1px solid  #7625ff;
 }
 .purple-horizontal{
-border-top-style:solid;
+
     border-bottom-style:solid;
    border-color:  #7625ff;
    border-width: 1px;
