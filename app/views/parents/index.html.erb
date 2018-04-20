@@ -178,7 +178,7 @@
                                       
                                          <% @lfilters.each do |lfilter| %>
                                           <tr>
-                                            <td><a href="/lfilter/<%= lfilter.lfilter %>"><%= lfilter.lfilter %></a></td>
+                                            <td><a href="/lfilter/<%= lfilter.lfilter %>" style="pointer-events: none;"><%= lfilter.lfilter %></a></td>
                                            <!-- <td><%# lfilter.email %></td>-->
                                             <td><% if current_user %>
                                                     <%# link_to 'Show', lfilter %> 
