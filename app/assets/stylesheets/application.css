@@ -15,9 +15,9 @@
  *= bootstrap.min
  
  @import 'bootstrap-sprockets';
-
-*/
 @import 'bootstrap';
+*/
+
 /*
 .divider{
     width:5px;
