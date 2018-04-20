@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 resources :users
 resources :pfilters
 resources :lfilters
+ resources :parents
 
 post '/search' => 'students#search'
 

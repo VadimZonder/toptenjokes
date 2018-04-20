@@ -1,391 +1,303 @@
+  <head>
+      <title><%= yield(:title) %>Parent Results</title>
+  </head>
+  
+<!-- Google Natural Language API-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.4/jquery.min.js"></script>
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js", "chartkick" %>
-  <%= javascript_include_tag "https://code.highcharts.com/highcharts.js", "chartkick" %>
-  <%= javascript_include_tag "https://code.highcharts.com/highcharts.src.js", "chartkick" %>
-  <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
-  <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
-  
-<!-- 
-<p id="notice"><%# notice %></p>
 
-!!!!!!!!!!!!!!!RUN THIS ONLY IF RESULTS ARE NOT EMPTY ALL VIEWS MUST HAVE WHERE THEY REQUEST/GET FROM DB IN CONTROLLER @var.each index GET not posts-->
+<%# make divs stack upon one another%>
+<p id="notice"><%= notice %></p>
 
-
-
-
-<div class="row">
-  <div class="col-xs-6">
-    <h3>Total Averages of all the Subjects</h3>
-<%= column_chart Result.group(:classes).average("grade") %>
-
-
-
-</div>
-<%# table average%>
-<div class="row">
-  <div class="col-xs-6">
-    <h3>Total Averages in Pie</h3>
-    <%#pie_chart Result.group(:classes).sum(:grade) %>
-   <%=  pie_chart Result.group(:classes).average("grade")  %>
-  </div>
-</div>
-</div>
-</div>
-<!-- Line Chart - Multiple Series -->
-<br>
-  <div class="col-xs-12">
-    <h3>Grades Trends Table</h3>
-    <%# line_chart data,min: 1, max: 5000%>
-    <%# line_chart   Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group_by_day(:updated_at, format: "%B %d, %Y").count }  }, discrete: true %>
-    <%# line_chart  Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group(:created_at).sum(:grade) } }, discrete: true%>
-    <%= line_chart Result.group(:classes).group(:updated_at).sum(:grade),legend: true,  legend: "top"%>
-</div>
-
-<br>
-
-<%# table latest result%>
-<%# column_chart Result.group(:grade).group_by_week(:created_at).count(:classes).first%>
-<%# table rends%>
-<%# line_chart Result.group(:classes).group_by_day(:created_at).sum(:grade)%>
-
-
-<div class="row">
-  <div class="col-xs-6">
-      <br><br><br><br><br></br>
-    <h3>Total Averages of Student's Behaviour per Subjects</h3>
-<%= column_chart Result.group(:classes).average("behaviour"),min: 1, max: 10 %>
-
-
-
-</div>
-<br>
-<%# table average%>
-<div class="row">
-  <div class="col-xs-6">
-      <br><br><br><br><br></br>
-    <h3>Total Behaviour Averages in Pie</h3>
-    <%#pie_chart Result.group(:classes).sum(:grade) %>
-   <%=  pie_chart Result.group(:classes).average("behaviour")  %>
-  </div>
-</div>
-</div>
-</div>
-<!-- Line Chart - Multiple Series -->
-<br>
-  <div class="col-xs-12">
-    <h3>Behaviour Trends Table</h3>
-    <%# line_chart data,min: 1, max: 5000%>
-    <%# line_chart   Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group_by_day(:updated_at, format: "%B %d, %Y").count }  }, discrete: true %>
-    <%# line_chart  Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group(:created_at).sum(:grade) } }, discrete: true%>
-    <%= line_chart Result.group(:classes).group(:updated_at).sum(:behaviour),min: 1, max: 10 %>
-</div>
-
-<br>
-
-<!-- experiment------------------------------------------------------------------------------------------------------------------------------------------------->
- <%# table of all the results for a particular student%>
-<% if @results.length == 0 %>
-                        <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h3 class="title">No behaviour results</h3>
-                               
+<div class="content">
+    <div class="col-md-12">
+        <div class="card card-plain">
+            <div class="header">
+                <div class="container-fluid">
+                    
+                    <% if @results.length == 0 %>
+                    
+                        <h3 class="title text-warning">There are no results yet added for this student</h3>
+                          
+                                <br>
+                                    <p><%= link_to("Back", parents_url) %></p>
+                </div>
+            </div>
+           
+        </div>
+                    <% else %>
+                        <h2 class="title">Grades</h2>
+                           
+                            <br>
+                                <p><%= link_to("Back", parents_url) %></p>
                                 
+                            <!-- Grades Column Chart Averages -->
+                            <div class="row">
+                              <div class="col-xs-6">
+                                <h3>Averages of all the Subjects</h3>
+                                    <%= column_chart Result.group(:classes).average("grade") %>
+                               </div>
+                            
+                            <!-- Grades Pie Chart Averages -->
+                            <div class="row">
+                              <div class="col-xs-6">
+                                <h3 class="text-center">Averages in Pie</h3>
+                                   <%=  pie_chart Result.group(:classes).average("grade")  %>
+                              </div>
                             </div>
-                            </div>
-                            </div>
-<% else %>
+                           </div>
 
-  <!--  
-   <tbody class="table-hover">
-<tr>
-</tr>
-</tbody>
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Filter Table</h4>
-                                <p class="category">This table is filtered by the surname or email</p>
-                                   <p class="category">Behaviour 1-10 (1 = worst | 10 = best)</p>
+                            <!-- Line Chart Grades Trends -->
+                            <div class="row">
+                              <div class="col-xs-12">
+                                <h3>Grades Trends Table</h3>
+                                    <%= line_chart Result.group(:classes).group(:updated_at).sum(:grade)%>
+                              </div>
+                            </div>
+                            <br>
+
+                           <!-- Behaviour Column Chart Averages -->
+                           <div class="row">
+                             <div class="col-xs-6">
+                             <br><br><br><br><br><br></br>
+                              <h2 class="title">Behaviour Scores</h2>
+                                <h3>Averages of Student's Behaviour per Subjects</h3>
+                                <%= column_chart Result.group(:classes).average("behaviour"),min: 1, max: 10  %>
+                            </div>
+                            
+                            <!-- Behaviour Pie Chart Averages -->
+                            <div class="row">
+                              <div class="col-xs-6">
+                              <br><br><br><br><br><br><br><br><br><br><br>
+                              <h3 class="text-center">Behaviour Averages in Pie</h3>
+                                <%=  pie_chart Result.group(:classes).average("behaviour")  %>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                         <!-- Line Chart Behaviour Trends -->
+                            <div class="col-xs-12">
+                              <h3>Behaviour Trends Table</h3>
+                                  <%= line_chart Result.group(:classes).group(:updated_at).sum(:behaviour),min: 1, max: 10 %>
+                                  <br><br></br><br><br></br>
+                            </div>
+                            <br>
+
+<!-- E-School-J Natural Language Behavioural Comments Analysis Function  -->  
+
+                            <!--variables to store the count of good and bad comments-->
+                              <% negativeCounter = 0 %>
+                              <% positiveCounter = 0 %>
+                              
+                              <%# this variable is for Goolge Natural Language API. 
+                              All the comments are stored into one single string and then the analysis is ran.
+                              This is done to reduce the API calls.%>
+                              <%text_content=" "%>
+
+                              <!-- Sorting through comments -->
+                              <% @results.each do |result| %>
+                                <%text_content = text_content+". "+result.comment%> 
+                                
+                            <!-- downcasing to avoid errors with upper case strings-->
+                            <!-- double negative first to get rid of the longest substrings first and 
+                            then not having them counted when the string is shorter containing some of the string. Brcause it then would count as opposite-->
+                            <%if result.comment.downcase().include? ("not a bad student") || result.comment.downcase().include?("not inappropriate") || 
+                                result.comment.downcase().include?("not misbehaving") ||  result.comment.downcase().include?("not messing") ||  
+                                result.comment.downcase().include?("not desrupting") ||  result.comment.downcase().include?("not disrepecting") %>
+                                   <% positiveCounter+=1 %>
+                                   
+                             <!-- display for debugging-->      
+                             <!--  <td><%# result.comment %><p><%# "result of the positive counter #{positiveCounter}" %></p></td> -->
+                            <!-- then negatives with "not" sicne they are longer and strings with one word would not be triggered for the opposite counter-->
+                            <%elsif result.comment.downcase().include?("not good") ||  result.comment.downcase().include?("not a good") ||  
+                                result.comment.downcase().include?("not behaving") ||  result.comment.downcase().include?("bad student") ||  
+                                result.comment.downcase().include?("not a strong") ||  result.comment.downcase().include?("not well") ||  
+                                result.comment.downcase().include?("bad") ||  result.comment.downcase().include?("poor") || result.comment.downcase().include?("inappropriate") ||  
+                                result.comment.downcase().include?("disrespectful") || result.comment.downcase().include?("misbehaving") ||  result.comment.downcase().include?("misbehave") || 
+                                result.comment.downcase().include?("problematic") || result.comment.downcase().include?("harmful") ||  result.comment.downcase().include?("not a hard working")  %>
+                                   <% negativeCounter+=1 %>
                              
+                            <!-- display for debugging-->        
+                            <!--  <td><%#result.comment %><p><%# "result of the negativecounter #{negativeCounter}" %></p></td>
+                            <!-- try adding all nots-->
+                            <%elsif result.comment.downcase().include?("good") ||  result.comment.downcase().include?("well") ||  
+                                result.comment.downcase().include?("great") ||  result.comment.downcase().include?("excellent") ||  
+                                result.comment.downcase().include?("strong") ||  result.comment.downcase().include?("hard working") ||  
+                                result.comment.downcase().include?("determined") ||  result.comment.downcase().include?("amazing") ||  
+                                result.comment.downcase().include?("enthusiastic")  ||  result.comment.downcase().include?("best")  ||  
+                                result.comment.downcase().include?("outstanding")  ||  result.comment.downcase().include?("gentleman") ||  
+                                result.comment.downcase().include?("kind") ||  result.comment.downcase().include?("enjoyable") %>
+                                   <% positiveCounter+=1 %>
+                                   
+                                   <!-- display for debugging-->
+                                   <!-- <td><%# result.comment %><p><%# "result of the positive counter #{positiveCounter}" %></p></td>
+                            
+                            <%else %>
+                                 <!-- display for debugging
+                                 <td><%#result.comment %></td>-->
+                            <%end %>
+                    
+                        <%end %>
+                    
+            
+                    
+                         <!-- E-School-J Natural Languge Behavioural Comments Analysis Results Column and Pie Charts-->       
+                        <div class="container-fluid">
+                          <h3 class="title">E-School-J Natural Languge Behavioural Comments Analysis</h3>
+                            <div class="row">
+                              <div class="col-xs-6">
+                              <br><br>
+                                <h3>All The Positive VS Negative Comments</h3>
+                                <%# if no behavioural comments shows empty table message%>
+                                    <%= column_chart [["Positive Comments", positiveCounter], ["Negative Comments", negativeCounter]], messages: {empty: "No data"}  %>
+                               </div>
+                            
+                            <div class="row">
+                              <div class="col-xs-6">
+                              <br><br><br>
+                                <h3 class="text-center">Pie Version</h3>
+                                    <%# if no behavioural comments shows empty table message%>
+                                    <%= pie_chart [["Positive Comments", positiveCounter], ["Negative Comments", negativeCounter]], messages: {empty: "No data"}  %>
+                              </div>
                             </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
+                        </div>
 
 
+<!----------  Sentiment Google Cloud API BEGIN---------------------------------------------------------------------------->
 
-  <thead>
-    <tr>
-      <th>Behaviour</th>
-  <% negativeCounter = 0 %>
-  <% positiveCounter = 0 %>
-    </tr>
-  </thead>
-
-  <tbody>
-      <!-- make a note that the teacher will only add a comment on bhaviour and not marks, marks are expressed in marks -->
-    <% @results.each do |result| %>
- <!--       <tr>
-          <!-- first make downcase so that no repetition-->
-        <!-- double negative first so that we get rid of the longest substrings first-->
-         <%  if result.comment.downcase().include? ("not a bad student") || result.comment.downcase().include?("not inappropriate") || 
-        result.comment.downcase().include?("not misbehaving") ||  result.comment.downcase().include?("not messing") ||  
-        result.comment.downcase().include?("not desrupting") ||  result.comment.downcase().include?("not disrepecting") %>
-           <% positiveCounter+=1 %>
-  <!--          <td><%# result.comment %><p><%# "result of the positive counter #{positiveCounter}" %></p></td>
-        <!-- then negatives with "not" sicne they are longer-->
-        <%  elsif result.comment.downcase().include?("not good") ||  result.comment.downcase().include?("not a good") ||  
-        result.comment.downcase().include?("not behaving") ||  result.comment.downcase().include?("bad student") ||  
-        result.comment.downcase().include?("not a strong") ||  result.comment.downcase().include?("not well") ||  
-        result.comment.downcase().include?("bad") ||  result.comment.downcase().include?("poor") || result.comment.downcase().include?("inappropriate") ||  
-        result.comment.downcase().include?("disrespectful") || result.comment.downcase().include?("misbehaving") ||  result.comment.downcase().include?("misbehave") || 
-        result.comment.downcase().include?("problematic") ||
-        result.comment.downcase().include?("harmful") ||  result.comment.downcase().include?("not a hard working")  %>
-           <% negativeCounter+=1 %>
-  <!--          <td><%#result.comment %><p><%# "result of the negativecounter #{negativeCounter}" %></p></td>
-        <!-- try adding all nots-->
-        <%  elsif result.comment.downcase().include?("good") ||  result.comment.downcase().include?("well") ||  
-        result.comment.downcase().include?("great") ||  result.comment.downcase().include?("excellent") ||  
-        result.comment.downcase().include?("strong") ||  result.comment.downcase().include?("hard working") ||  
-        result.comment.downcase().include?("determined") ||  result.comment.downcase().include?("amazing") ||  
-        result.comment.downcase().include?("enthusiastic")  ||  result.comment.downcase().include?("best")  ||  
-        result.comment.downcase().include?("outstanding")  ||  result.comment.downcase().include?("gentleman") ||  
-        result.comment.downcase().include?("kind") ||  result.comment.downcase().include?("enjoyable") %>
-           <% positiveCounter+=1 %>
-   <!--         <td><%# result.comment %><p><%# "result of the positive counter #{positiveCounter}" %></p></td>
-        
-           <%  else %>
-             <td><%#result.comment %></td>
-   <%  end %>
-      </tr>
-         
-          
-    <% end %>
-  </tbody>
-</table>
--->
-<% end %>
-
-</div>
-</div>
-</div> 
-
-<div class="row">
-  <div class="col-xs-6">
-      <br><br><br><br><br></br>
-    <h3>Total Number of All The Positive VS Negative Comments</h3>
-        <%= column_chart [["Positive Comments", positiveCounter], ["Negative Comments", negativeCounter]] %>
-</div>
-
-<div class="row">
-  <div class="col-xs-6">
-      <br><br><br><br><br></br>
-    <h3>Total Number of All The Positive VS Negative Comments in Pie</h3>
-        <%= pie_chart [["Positive Comments", positiveCounter], ["Negative Comments", negativeCounter]] %>
-  </div>
-</div>
-</div>
-</div>
-
-<!----------  Sentiment Google Cloud BEGIN----------------------------------------------------------------------------------------------------------------------------------------->
-<!-- experiment------------------------------------------------------------------------------------------------------------------------------------------------->
- <%# table of all the results for a particular student%>
-   <%text_content = " "%>
-<% if @results.length == 0 %>
-                        <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h3 class="title">No behaviour results</h3>
-                               
-                                
-                            </div>
-                            </div>
-                            </div>
-<% else %>
-
-
-    </tr>
-  </thead>
-
-  <tbody>
-      <!-- make a note that the teacher will only add a comment on bhaviour and not marks, marks are expressed in marks -->
-    <% @results.each do |result| %>
-    <%#saving all the content in one fil so reduece api calls = cheap. maybe add a button so to reduce even more on request call the API%>
-        <%text_content = text_content+". "+result.comment%> 
-        
-         
-          
-    <% end %>
-  </tbody>
-</table>
-
-<% end %>
-<%#for debuggin =  printing the whole string to request after adding all the strings of one student together%>
-  <p><%# "Text Content   #{text_content}" %></p>
-
-
-
-  <%#
-  #enable when finished
-  #for debugging purposes
-  #text_content = "very good student improved a lot since the beginning of the year Arthur began to misbehave in class still constantly disrupting the class"
-  #reduce the code some of it here is not necessary I am just returning a number
-  require "google/cloud/language"
-  #may need ot change on deployment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!%><%
-                        #ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/ubuntu/workspace/key.json"
+                           <%# table of all the results for a particular student%>
+                           <%#text_content = " "%>
+                        
+                          <%#for debuggin =  printing the whole string to request after adding all the strings of one student together%>
+                          <%# "Text Content   #{text_content}" %>
+                          
+                          <%#
+                          #enable when finished!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! %><%
+                          #for debugging purposes
+                          #text_content = "very good student improved a lot since the beginning of the year Arthur began to misbehave in class still constantly disrupting the class"
+                          #reduce the code some of it here is not necessary I am just returning a number
+                          require "google/cloud/language"
+                          
+                       
+        #may need ot change on deployment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+                         #ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/ubuntu/workspace/key.json"
                          ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "/app/key.json"
-  language = Google::Cloud::Language.new
+                          language = Google::Cloud::Language.new
+                        
+                          response = language.analyze_sentiment content: text_content, type: :PLAIN_TEXT
+                        
+                          sentiment = response.document_sentiment
+                          
+                          @sentiment_score=sentiment.score  #"Overall document sentiment: (#{sentiment.score})"
+                          # [END migration_sentiment]
+                        
+                          puts "Overall document sentiment: (#{sentiment.score})"
+                          puts "Sentence level sentiment:"
+                        
+                          sentences = response.sentences
+                        
+                          sentences.each do |sentence|
+                            sentiment = sentence.sentiment
+                            puts "#{sentence.text.content}: (#{sentiment.score})"
+                          end
+                          # [END sentiment_from_text]
+                          #end
+                        
+                        
+                        
+                        if __FILE__ == $PROGRAM_NAME
+                        
+                          if ARGV.length == 1
+                            puts "Sentiment:"
+                            sentiment_from_text text_content: ARGV.first
+                            puts "Entities:"
+                            entities_from_text text_content: ARGV.first
+                            puts "Syntax:"
+                            syntax_from_text text_content: ARGV.first
+                            puts "Classify:"
+                            classify_text text_content: ARGV.first
+                          else
+                            puts "Usage: ruby language_samples.rb <text-to-analyze>"
+                          end
+                        
+                         end 
+                         
+                         %>
 
-  response = language.analyze_sentiment content: text_content, type: :PLAIN_TEXT
+                    <div class="row">
+                      <div class="col-xs-6">
+                      <br><br><br><br><br></br>
+                         <h3 class="title">Google Natural Language Sentiment Analysis of All The Comments</h3>
+                           <p>1 = Maximum Good, 0 = Neuteral and -1 is Maximum Bad</p>
+                         <br>
+                            <%# if no behavioural comments show empty table message%>
+                            <%= column_chart [["Sentiment Scores", @sentiment_score]],min: -1, max: 1, messages: {empty: "No data"} %>
+                      </div>
+                      
+                    <%# table average%>
+                    <div class="row">
+                      <div class="col-xs-6">
+                      <br><br><br><br><br></br>
+                        <h4 class="text-center">Sentiment Score</h4>
+                        <br><br><br><br><br></br>
+                           <h5 class="text-center"><%= "Sentiment results:   #{@sentiment_score}" %></h5>
+                        <%# if no behavioural comments show empty table message%>
+                       <%# pie_chart [["Sentiment Scores", @sentiment_score]],min: -1, max: 1, messages: {empty: "No data"} %>
+                      </div>
+                    </div>
+                  </div>
 
-  sentiment = response.document_sentiment
-  
-  @sentiment_score=sentiment.score  #"Overall document sentiment: (#{sentiment.score})"
-  # [END migration_sentiment]
-
-  puts "Overall document sentiment: (#{sentiment.score})"
-  puts "Sentence level sentiment:"
-
-  sentences = response.sentences
-
-  sentences.each do |sentence|
-    sentiment = sentence.sentiment
-    puts "#{sentence.text.content}: (#{sentiment.score})"
-  end
-  # [END sentiment_from_text]
-  #end
-
-
-
-if __FILE__ == $PROGRAM_NAME
-
-  if ARGV.length == 1
-    puts "Sentiment:"
-    sentiment_from_text text_content: ARGV.first
-    puts "Entities:"
-    entities_from_text text_content: ARGV.first
-    puts "Syntax:"
-    syntax_from_text text_content: ARGV.first
-    puts "Classify:"
-    classify_text text_content: ARGV.first
-  else
-    puts "Usage: ruby language_samples.rb <text-to-analyze>"
-  end
-
-
-
-  
-
- end 
- 
- %>
-
-<%#dispaly this as well %>
-   <p><%= "Sentiment results:   #{@sentiment_score}" %></p>
-   
-   
-<div class="row">
-  <div class="col-xs-6">
-      <br><br><br><br><br></br>
-    <h3>Google Natural Language Sentiment Analysis of all text comments</h3>
-     <p>1 = Maximum Good, 0 = Neuteral and -1 is Maximum Bad</p>
-        <%= column_chart [["Sentiment Scores", @sentiment_score]],min: -1, max: 1%>
-  </div>
-<!----------  Sentiment Google Cloud End----------------------------------------------------------------------------------------------------------------------------------------->
-  
-
+<!----------  Sentiment Google Cloud End--------------------------------------------------------------------------------------------------->
   
 <!-------------------------------------------------------------------------------  Filters TABLE BEGIN------------------>      
  
-<br><br><br>
- <%# table of all the results for a particular student%>
-<% if @results.length == 0 %>
-                        <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h3 class="title">There are no results yet added for this student</h3>
-                                <h4><%= link_to 'Add A New Result', new_result_path %></h4>
-                                
-                            </div>
-                            </div>
-                            </div>
-<% else %>
+                         <br><br><br><br><br></br>
+                         <h2 class="title">All Results</h2>
+                         <br>
+                           <div class="card">
+                             <div class="header">
+                                <h4 class="title">Results Table</h4>
 
-  
-   <tbody class="table-hover">
-<tr>
-</tr>
-</tbody>
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <br><br><br><br><br></br>
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Filter Table</h4>
-                                <p class="category">This table is filtered by the surname or email</p>
-                                   <p class="category">Behaviour 1-10 (1 = worst | 10 = best)</p>
+                                   <br>
+                                    <p><%= link_to("Back", parents_url) %></p>
                              
+                               </div>
+                               <div class="content table-responsive table-full-width">
+                                  <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                        <!--changing css left right center + deleteing some fields-->
+                                          <th class="text-left">Date time</th>
+                                          <th class="text-center">Subject</th>
+                                          <th class="text-center">Teacher</th>
+                                          <th class="text-center">Grade 1-100</th>
+                                          <th class="text-center">Behaviour</th>
+                                          <th class="text-center">Comment</th>
+                                         
+                                        </tr>
+                                      </thead>
+                                    
+                                      <tbody>
+                                        <% @results.each do |result| %>
+                                          <tr>
+                                            <td class="text-left"><%= result.date_time.strftime("%d/%m/%Y at %H:%M") %></td>
+                                            <td class="text-center"><%= result.classes %></td>
+                                            <td class="text-center"><%= result.teacher %></td>
+                                            <td class="text-center"><%= result.grade %></td>
+                                            <td class="text-center"><%= result.behaviour %></td>
+                                            <td class="text-center"><%= result.comment %></td>
+                                            
+                                          </tr>
+                                        <% end %>
+                                      </tbody>
+                                    </table>
+                                <% end %>
                             </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
-
-
-
-  <thead>
-    <tr>
-      <th>Date time</th>
-      <th>Class</th>
-      <th>Teacher</th>
-      <th>Grade 1-100</th>
-      <!--
-      <th>Student's Email</th>
-      <th>Parent's Email</th>
-      -->
-      <th>Behaviour</th>
-      <th>Comment</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @results.each do |result| %>
-      <tr>
-        <td><%= result.date_time.strftime("%d/%m/%Y at %H:%M") %></td>
-        <td><%= result.classes %></td>
-        <td><%= result.teacher %></td>
-        <td><%= result.grade %></td>
-        <!--
-        <td><%# result.email %></td>
-        <td><%# result.parent_email %></td>
-        -->
-        <td><%= result.behaviour %></td>
-        <td><%= result.comment %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
-
-</div>
-</div>
-</div>    
-
-
-
-
-
-  </div>
-
-                        </div>
+                            
                     </div>
-    
-    
-    
-          <!-------------------------------------------------------------------------------  Filter TABLE END------------------>   
+                                        
+               <p><%= link_to("Back", parents_url) %></p>                          
+                              
+ <!-------------------------------------------------------------------------------  Filter TABLE END------------------>   
 
 

@@ -11,43 +11,40 @@
     	<div class="sidebar-wrapper" >
             <div class="logo">
                 <a href="https://www.linkedin.com/in/vadim-malakhovski/" target="_blank" class="simple-text">
-                    E-School-J
+                    SchoolApp
                 </a>
             </div>
 
             <ul class="nav">
-                <li>
-                    <a href="parents.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Parents</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="students.html">
-                        <i class="pe-7s-user"></i>
-                        <p>Teachers</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="views/static_pages/table.html.erb">
-                        <i class="pe-7s-note2"></i>
-                        <p>Education Articles</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="typography.html">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>About Us</p>
-                    </a>
-                </li>
-                  <!--
-                <li>
-                    <a href="icons.html">
-                        <i class="pe-7s-science"></i>
-                        <p>How To Tutorial</p>
-                    </a>
+                   <li>
+                   <%= link_to ({:controller => 'parents', :action => 'index'}) do %>
+  <%= image_tag("icons/parents32.png", :alt => "parents", :class => "header_icons") %>
+  <span>Parents</span>
+<% end %>
                 </li>
               
+                                  <li>
+                   <%= link_to ({:controller => 'students', :action => 'index'}) do %>
+  <%= image_tag("icons/teachers32.png", :alt => "teachers", :class => "header_icons") %>
+  <span>Teachers</span>
+<% end %>
+                </li>
+                
+                  <li>
+                   <%= link_to "https://www.irishtimes.com/news/education" ,target: "_blank" do %>
+  <%= image_tag("icons/articles32.png", :alt => "articles", :class => "header_icons") %>
+  <span>Articles</span>
+<% end %>
+                </li>
+                
+                 <li>
+                   <%= link_to ({:controller => 'static_pages', :action => 'about_us'}) do %>
+  <%= image_tag("icons/about32.png", :alt => "about", :class => "header_icons") %>
+  <span>About Us</span>
+<% end %>
+                </li>
+                  
+              <!--
                 <li>
                     <a href="maps.html">
                         <i class="pe-7s-map-marker"></i>
@@ -101,12 +98,12 @@
                            <li>
                                      
     
-                            <a  class="dropdown-toggle" data-toggle="dropdown" href="https://e-school-j.herokuapp.com/users/<%= @user_id%>/edit">
+                            <a  class="dropdown-toggle" data-toggle="dropdown" href="https://schoolapple.herokuapp.com/users/<%= @user_id%>/edit">
                                 <i class="fa fa-dashboard"></i>
                                  <%#=link_to "Welcome:   #{@user_name}", "https://deploy-vadimmalakhovski.c9users.io/users/#{@user_id}/edit" %>  <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
            <%#activate when deploying%>
 								<p ><%= "Welcome:   #{@user_first_name}"%></p>
-								 <%#link_to  "https://e-school-j.herokuapp.com//users/#{@user_id}/edit" %> <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
+								 <%#link_to  "https://schoolapple.herokuapp.com//users/#{@user_id}/edit" %> <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
     
                             </a>
                         </li>

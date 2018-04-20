@@ -1,3 +1,8 @@
+  <head>
+      <title><%= yield(:title) %>Teacher Results</title>
+  </head>
+  
+
 <!-- Google Natural Language API-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.4/jquery.min.js"></script>
 
@@ -175,7 +180,7 @@
                           require "google/cloud/language"
                           
                        
-        #may need ot change on deployment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        #may need ot change on deployment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
                          #ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/ubuntu/workspace/key.json"
                          ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "/app/key.json"
                           language = Google::Cloud::Language.new

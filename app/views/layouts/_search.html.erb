@@ -1,7 +1,7 @@
 <%= form_tag("/search" , :method => "post") do %>
 
 <%# label_tag("Search by Surname, email or school:")  %>
-<%= link_to image_tag("Icons/search-purple48.gif",alt:"Search Icon",class:"purple", class:"icons", id:"search_icon", :size => '28x28') %>
+<%= link_to image_tag("icons/search-purple48.gif",alt:"Search Icon",class:"purple", class:"icons", id:"search_icon", :size => '28x28') %>
 <%= text_field_tag(:q, nil, placeholder: 'surname, email or school') %>
 <%= submit_tag("Search",class:"purple") %>
 <% end %>
