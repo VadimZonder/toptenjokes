@@ -5,7 +5,7 @@ module UsersHelper
    #in helper because I need to access it from different controllers and views
   def current_user
   
-          #
+
     if session[:user_id]  != nil
      #@sign_in =true
      @user_name = User.where(id: session[:user_id]).first
