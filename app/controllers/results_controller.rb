@@ -19,6 +19,7 @@ include UsersHelper
     #returning all the results in the DB for all the students
     #@results = Result.all
 
+#this is the longest and most complex method to get student's therefore won't use
     #get the current URI once on this page
     @URI = request.original_url
     #split the URI to get everything after the = sign
@@ -32,12 +33,12 @@ include UsersHelper
     @at="@"  
     @st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
     #saving the reconstructed email into a variable
-    st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
+    @emailFinal=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
     #searching the DB to match all the results of a student with the unique email and displaying newst first
-    @results= Result.order("created_at DESC").where("email like ? ",st)
+    @results= Result.order("created_at DESC").where("email like ? ",@emailFinal)
     
     #try change to just @resilts and to = Result.where("email like ? ",st)
-    @resultsChart= Result.where("email like ? ",st)
+    @resultsChart= Result.where("email like ? ",@emailFinal)
 
   end
   
@@ -68,13 +69,13 @@ end
 def teacher_result
 
   #get student's email backup method - also working but since global vars are not adivesed then other one is preffered.
-  #uncomment lines with 3 hashes
+  #needed for destroy redirection to the right student
     #this code is to get back to an appriopriate place
     #geting the URI of the current page
-    ###$studentEmail = request.original_url
+    $studentEmail = request.original_url
     #geting the email of the current student being worked on
     #bu splittin the URI into an array and getting the last element which would be an email
-    ###$studentEmail =  $studentEmail.split('/')[-1]
+    $studentEmail =  $studentEmail.split('/')[-1]
    
     
     
@@ -136,7 +137,7 @@ end
 #change on deployment 
 #format.html { redirect_to "https://schoolapple.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
 #format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }        
-       format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
+       format.html { redirect_to "schoolapple.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
         format.json { render :show, status: :created, location: @result }
       else
         format.html { render :new }
