@@ -34,14 +34,14 @@
                             <div class="row">
                               <div class="col-xs-6">
                                 <h3>Averages of all the Subjects</h3>
-                                    <%= column_chart Result.group(:classes).average("grade") %>
+                                    <%= column_chart @resultsChart.group(:classes).average("grade") %>
                                </div>
                             
                             <!-- Grades Pie Chart Averages -->
                             <div class="row">
                               <div class="col-xs-6">
                                 <h3 class="text-center">Averages in Pie</h3>
-                                   <%=  pie_chart Result.group(:classes).average("grade")  %>
+                                   <%=  pie_chart @resultsChart.group(:classes).average("grade")  %>
                               </div>
                             </div>
                            </div>
@@ -50,7 +50,7 @@
                             <div class="row">
                               <div class="col-xs-12">
                                 <h3>Grades Trends Table</h3>
-                                    <%= line_chart Result.group(:classes).group(:updated_at).sum(:grade)%>
+                                    <%= line_chart @resultsChart.group(:classes).group(:updated_at).sum(:grade)%>
                               </div>
                             </div>
                             <br>
@@ -61,7 +61,7 @@
                              <br><br><br><br><br><br></br>
                               <h2 class="title">Behaviour Scores</h2>
                                 <h3>Averages of Student's Behaviour per Subjects</h3>
-                                <%= column_chart Result.group(:classes).average("behaviour"),min: 1, max: 10  %>
+                                <%= column_chart @resultsChart.group(:classes).average("behaviour"),min: 1, max: 10  %>
                             </div>
                             
                             <!-- Behaviour Pie Chart Averages -->
@@ -69,7 +69,7 @@
                               <div class="col-xs-6">
                               <br><br><br><br><br><br><br><br><br><br><br>
                               <h3 class="text-center">Behaviour Averages in Pie</h3>
-                                <%=  pie_chart Result.group(:classes).average("behaviour")  %>
+                                <%=  pie_chart @resultsChart.group(:classes).average("behaviour")  %>
                               </div>
                             </div>
                           </div>
@@ -78,7 +78,7 @@
                          <!-- Line Chart Behaviour Trends -->
                             <div class="col-xs-12">
                               <h3>Behaviour Trends Table</h3>
-                                  <%= line_chart Result.group(:classes).group(:updated_at).sum(:behaviour),min: 1, max: 10 %>
+                                  <%= line_chart @resultsChart.group(:classes).group(:updated_at).sum(:behaviour),min: 1, max: 10 %>
                                   <br><br></br><br><br></br>
                             </div>
                             <br>

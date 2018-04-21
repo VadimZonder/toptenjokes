@@ -1,4 +1,4 @@
-module UsersHelper
+module UsersHelper2
   # 
 
    #my own current user method
@@ -14,12 +14,12 @@ module UsersHelper
      @user_last_name = User.find_by(id: session[:user_id]).last_name
      
       
-     @user_email = User.find_by(id: session[:user_id]).email
-     @user_id= User.find_by_email(@user_email).id
-     return true
+    @user_email = User.find_by(id: session[:user_id]).email
+     #@user_id= User.find_by_email(@user_email).id
+    
     else 
   # @sign_in=false
-   return false
+  
     #@helper ="helper works"
   end
   
@@ -27,6 +27,7 @@ module UsersHelper
   end
   
   
-  
+ 
+ 
 
 end

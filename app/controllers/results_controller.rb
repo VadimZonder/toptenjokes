@@ -56,25 +56,26 @@ def parent_result
   #split the URI to get everything after the / sign
   @URI = @URI.split('/').last
   @URI = @URI.to_s
-  st=@URI
+ 
   #searching the DB to match all the results of a student with the unique email and displaying newst first
-   @results= Result.order("created_at DESC").where("email like ? ",st)
+   @results= Result.order("created_at DESC").where("email like ? ", @URI)
   
   
   #try change to just @resilts and to = Result.where("email like ? ",st)
-    @resultsChart= Result.where("email like ? ",st)
+    @resultsChart= Result.where("email like ? ", @URI)
 end
 
 def teacher_result
 
-  
+  #get student's email backup method - also working but since global vars are not adivesed then other one is preffered.
+  #uncomment lines with 3 hashes
     #this code is to get back to an appriopriate place
     #geting the URI of the current page
-    $studentEmail = request.original_url
+    ###$studentEmail = request.original_url
     #geting the email of the current student being worked on
     #bu splittin the URI into an array and getting the last element which would be an email
-    $studentEmail =  $studentEmail.split('/')[-1]
-    
+    ###$studentEmail =  $studentEmail.split('/')[-1]
+   
     
     
   #results for parents. Here is simplified because there was no need for extra steps like in index
@@ -82,13 +83,13 @@ def teacher_result
   #split the URI to get everything after the / sign
   @URI = @URI.split('/').last
   @URI = @URI.to_s
-  st=@URI
+  
   #searching the DB to match all the results of a student with the unique email and displaying newst first
-   @results= Result.order("created_at DESC").where("email like ? ",st)
+   @results= Result.order("created_at DESC").where("email like ? ", @URI)
   
   
   #try change to just @resilts and to = Result.where("email like ? ",st)
-    @resultsChart= Result.where("email like ? ",st)
+    @resultsChart= Result.where("email like ? ",@URI)
 end
 
   # GET /results/1
@@ -135,7 +136,7 @@ end
 #change on deployment 
 #format.html { redirect_to "https://schoolapple.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
 #format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }        
-       format.html { redirect_to "https://schoolapple.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
+       format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
         format.json { render :show, status: :created, location: @result }
       else
         format.html { render :new }
@@ -158,7 +159,7 @@ end
         #format.html { redirect_to "https://schoolapple.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
         #format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully updated.' }
 
-       format.html { redirect_to "https://schoolapple.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
+       format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
         format.json { render :show, status: :ok, location: @result }
       else
         format.html { render :edit }
@@ -183,7 +184,7 @@ end
 #format.html { redirect_to "https://e-schoolapple.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
 # format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully destroyed.' }
 
-      format.html { redirect_to "https://e-schoolapple.herokuapp.com/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
+      format.html { redirect_to "https://deploy-vadimmalakhovski.c9users.io/results/teacher_result/#{$studentEmail}", notice: 'Result was successfully created.' }
       format.json { head :no_content }
     end
   end

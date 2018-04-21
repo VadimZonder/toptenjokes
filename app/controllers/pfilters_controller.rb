@@ -1,6 +1,9 @@
 class PfiltersController < ApplicationController
-  before_action :set_pfilter, only: [:show, :edit, :update, :destroy]
 
+  before_action :set_pfilter, only: [:show, :edit, :update, :destroy]
+  #include is inheritence to get the contents of the helper. 
+#This is to avoid writing repetative code and is therefore achieveing DRYness
+#include UsersHelper
   # GET /pfilters
   # GET /pfilters.json
   def index
