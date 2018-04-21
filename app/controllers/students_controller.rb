@@ -88,8 +88,9 @@ end
     #displaying currnet user
   ###  @user_email = current_user.email
  ###   @user = current_user
+ st=@user_email
     #display the pfilters with the current user
-    @pfilters= Pfilter.where("email like ? ", @user_email) 
+    @pfilters= Pfilter.where("email like ? ", st) 
     
     #name = "Vadim"
     #@students= Student.where("name like ? ", name)
