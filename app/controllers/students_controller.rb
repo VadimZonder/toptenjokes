@@ -160,7 +160,7 @@ end
   end
 
   # DELETE /students/1
-  # DELETE /students/1.json
+  # DELETE /students/1.json#
   def destroy
     #@student= Student.find(params[:id])
     @student.destroy
