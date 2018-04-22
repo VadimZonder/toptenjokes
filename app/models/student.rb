@@ -5,5 +5,5 @@ class Student < ActiveRecord::Base
    
   end
 
- #has_many :results, dependent: :destroy
+ has_many :results, dependent: :destroy
 end
