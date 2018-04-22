@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
 #include is inheritence to get the contents of the helper. 
 #This is to avoid writing repetative code and is therefore achieveing DRYness
-#include UsersHelper
+include UsersHelper
 
   before_action :set_student, only: [:show, :edit, :update, :destroy], except: [:parent_filter]
   
