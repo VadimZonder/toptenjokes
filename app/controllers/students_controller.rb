@@ -88,8 +88,9 @@ end
     #displaying currnet user
   ###  @user_email = current_user.email
  ###   @user = current_user
+ st=@user_email
     #display the pfilters with the current user
-    @pfilters= Pfilter.where("email like ? ", @user_email) 
+    @pfilters= Pfilter.where("email like ? ", st) 
     
     #name = "Vadim"
     #@students= Student.where("name like ? ", name)
@@ -128,7 +129,7 @@ end
   ###  @user_first_name= current_user.first_name
   ###  @user_last_name= current_user.last_name
   end
-
+#
   # POST /students
   # POST /students.json
   def create
@@ -160,7 +161,7 @@ end
   end
 
   # DELETE /students/1
-  # DELETE /students/1.json
+  # DELETE /students/1.json#
   def destroy
     #@student= Student.find(params[:id])
     @student.destroy
@@ -169,7 +170,7 @@ end
       format.json { head :no_content }
     end
   end
-
+#
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student

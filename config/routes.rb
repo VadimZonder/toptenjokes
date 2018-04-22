@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   resources :results
   resources :students
 resources :users
-resources :pfilters
-resources :lfilters
- resources :parents
+
 
 post '/search' => 'students#search'
 
