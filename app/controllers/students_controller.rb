@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
 #include is inheritence to get the contents of the helper. 
 #This is to avoid writing repetative code and is therefore achieveing DRYness
-include UsersHelper
+#include UsersHelper
 
   before_action :set_student, only: [:show, :edit, :update, :destroy], except: [:parent_filter]
   
@@ -163,7 +163,7 @@ end
   # DELETE /students/1
   # DELETE /students/1.json#
   def destroy
-    @student= Student.find(params[:id])
+    #@student= Student.find(params[:id])
     @student.destroy
     respond_to do |format|
       format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
