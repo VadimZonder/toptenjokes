@@ -4,6 +4,6 @@ class Student < ActiveRecord::Base
       params.require(:student).permit(:name, :surname, :day_of_birth, :month_of_birth, :year_of_birth, :school, :email, :comment)
    
   end
-
+has_many :results, :dependent => :delete_all
  #has_many :results, dependent: :destroy
 end
