@@ -16,10 +16,14 @@ include UsersHelper
   #promt protecting pages in this controller (but save later to maek secure)
   #do not use on public computers the passwor is rememberd
  
-   #extra security the password for teacher will have a password + the date = each day different
+   #extra security - the password for the teachers will be current date + a password  = each day different
    @date = Time.now.strftime("%e")
-   ###uncomment at the end
-  #http_basic_authenticate_with :name => "@user", :password => @date + "12345"
+   #name can be anythig else like email, surname, username or wahtever
+   #password can be anything as well like the school to which the autharisation is made
+   #password and user params can be connected to the database and a SchoolApp admin could 
+   #update it once request is made by the school to access the teacher dashboard
+   #dynamic password will change every day 
+   http_basic_authenticate_with :name => "@user", :password => @date + "12345"
   
 
 def search
@@ -78,11 +82,11 @@ end
   # GET /students
   # GET /students.json
   def index
-    
+  
     #calling all the addon functions
     #@pfilters = Pfilter.all
     @students = Student.all
-    @filters = Filter.all
+
     
     ##Here we personalise filters so that each user will have their own unique filte
     #displaying currnet user

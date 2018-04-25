@@ -40,8 +40,8 @@ include UsersHelper
 
   
 #(if from browser /sample is called)
-def sample
-@controller_message = "Hello From Controller"
+def about
+
 end
  #(when in views var will be called)
 
