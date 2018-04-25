@@ -1,21 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	
-	
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    
+    <!-- the same applies to the rest of the code. The elemets that I've already declare that are comming form the template are similar below-->
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-	<title>Parent's Dashboard</title>
+    <title>Parent's Dashboard</title>
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 
-   <!-- Bootstrap core CSS     -->
+    <!-- Bootstrap core CSS     -->
     <link href="assets/stylesheets/bootstrap.min.css" rel="stylesheet">
 
     <!-- Animation library for notifications   -->
@@ -33,219 +34,219 @@
 
 
     
-<link href="https://ajax.googleapis.com/ajax/libs/jquery/3.0.1/jquery.min.jsy">
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link href="https://ajax.googleapis.com/ajax/libs/jquery/3.0.1/jquery.min.jsy">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
 </head>
 <body>
 
- <%= render 'layouts/header' %>
+   <%= render 'layouts/header' %>
 
-<!-------------------------------------------------------------------------------  Filters TABLE BEGIN------------------>   
+   <!-------------------------------------------------------------------------------  Filters TABLE BEGIN------------------>   
 
 
-        <div class="content purple-horizontal">
-             <p id="notice"><%= notice %></p>
-        <tbody class="table-hover">
-<tr>
-</tr>
-</tbody>
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Filter Table</h4>
-                                <p class="category">This table contains all students whose surname(s) or email(s) are in the filter table</p><br>
-                                <p><%= link_to 'Add a Student Filter', new_lfilter_path , class: "btn purple-button" %> </p>
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
-                                    <thead>
-                                        <th class="text-left">Name</th>
-                                        <th class="text-left">Date of Birth</th>
-                                        <th class="text-left">School</th>
-                                        <th class="text-left">Email</th>
-                                        <th class="text-left">Rsults</th>
-                                        <th class="text-left">Comment</th>
-                                    </thead>
-                                     
- <!--ROW 1 -->
-<!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
-<%#if (@students.length == 0 || @lfilters.length == 0) || (@students.length == 0 || @lfilters.length != 0) %>
-
-<%#here I am checking if 1. No students or filters are made = error 2. or there are filters but no students = error. note made elsif for the second so that erros can be more specific%>
-<%if (@students.length == 0 || @lfilters.length == 0) || (@students.length == 0 && @lfilters.length != 0) %>
+   <div class="content purple-horizontal">
+       <p id="notice"><%= notice %></p>
+       <tbody class="table-hover">
+        <tr>
+        </tr>
+    </tbody>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
                 <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                               <h4 class="text-warning">There are no resutls for the student/s you are looking for by what you are filtering (the student or/and the filter does not exist yet). Add a filter first and if same message appears then add a student)</h4>
-                             
-                            </div>
-                            </div>
-                            </div>
-<% end %>
-                                    <tbody>
-                                    
-                                       <tr>   
-                                        <!--ADD IF NO PFILTERS to display no filters result-->
-                                        <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
-                                      
-                                <% @lfilters.each do |lfilter| %>
-                                         <% @students.each do |student| %>
-                          <% if lfilter.lfilter.casecmp(student.surname) == 0 || lfilter.lfilter.casecmp(student.email) == 0  %>
-                                          <tr>
-<td ><%= "#{student.name} "  %><%= student.surname  %></td>
-<td ><%= "#{student.day_of_birth} /" %>  
-            <%= "#{student.month_of_birth} /"%>
-            <%= student.year_of_birth %></td>
-<td > <%= student.school %></td>
-<td > <%= student.email %></td>
-<td><%= link_to("Results", {:controller => 'results', :action => 'parent_result', :id =>  student.email}) %></td>
-<td > <%= student.comment %></td>
-
- <% end %>
-
- <% end %>
-
-
-</tbody>
-
-
-        </td>
-                                          </tr>
-                                     
-                                      <%end%>
-                                  
-                                     
-                                </table>
-
-</div>
-</div>
-</div>    
-        
-                   
- <!------------------------------------------------------------------------------- All Students TABLE BEGIN------------------>   
-
-
-
-
- 
-                    
-                     <div class="col-md-12">
-                         
-                         <p>
-  <button class="btn purple-button btn-primary" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="collapse">
-    Filter Table
-  </button>
-</p>
-<div class="collapse" id="collapse" >
-  <div class="card card-body">
-      
-      
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Filter Table</h4>
-                                <p class="category">This table contains filters - school,surname or email</p><br>
-                               <p><%= link_to 'Add a Student Filter', new_lfilter_path, class: "btn purple-button"  %> </p>
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
-                                    <thead>
-                                          <th>Surname/Email</th>
-                                          <!--<th>User's Email(delete)</th>-->
-                                          <th class="text-left">Edit/Delete</th>
-                                    </thead>
-                                     
- <!--ROW 1 -->
-<!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
-<!-- check for 0 filters -->
-<% if @lfilters.length == 0 %>
-                        <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h4 class="text-warning">There are no matches in this filter (add a filter first to see resutls if student exist in the database)</h4><br>
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Filter Table</h4>
+                            <p class="category">This table contains all students whose surname(s) or email(s) are in the filter table</p><br>
+                            <p><%= link_to 'Add a Student Filter', new_lfilter_path , class: "btn purple-button" %> </p>
+                        </div>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <th class="text-left">Name</th>
+                                    <th class="text-left">Date of Birth</th>
+                                    <th class="text-left">School</th>
+                                    <th class="text-left">Email</th>
+                                    <th class="text-left">Rsults</th>
+                                    <th class="text-left">Comment</th>
+                                </thead>
                                 
-                            </div>
-                            </div>
-                            </div>
-<% end %>
-                                    <tbody>
-                                        
-                                       <tr>   
-                                        <!--ADD IF NO PFILTERS to display no filters result-->
-                                        <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
-                                      
-                                         <% @lfilters.each do |lfilter| %>
-                                          <tr>
-                                            <td><%= lfilter.lfilter %></td>
-                                           <!-- <td><%# lfilter.email %></td>-->
-                                            <td><% if current_user %>
-                                                    <%# link_to 'Show', lfilter %> 
-                                                    <%= link_to 'Edit', edit_lfilter_path(lfilter) %> /
-                                                    <%= link_to 'Delete', lfilter, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                                <%else%>
-                                                <%end%>
-                                                </td>
-                                          </tr>
-                                     
-                                   
-                                     <% end %>
-                                     
-                                </table>
+                                <!--ROW 1 -->
+                                <!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
+                                <%#if (@students.length == 0 || @lfilters.length == 0) || (@students.length == 0 || @lfilters.length != 0) %>
 
-                            </div>
+                                <%#here I am checking if 1. No students or filters are made = error 2. or there are filters but no students = error. note made elsif for the second so that erros can be more specific%>
+                                <%if (@students.length == 0 || @lfilters.length == 0) || (@students.length == 0 && @lfilters.length != 0) %>
+                                <div class="col-md-12">
+                                    <div class="card card-plain">
+                                        <div class="header">
+                                         <h4 class="text-warning">There are no resutls for the student/s you are looking for by what you are filtering (the student or/and the filter does not exist yet). Add a filter first and if same message appears then add a student)</h4>
+                                         
+                                     </div>
+                                 </div>
+                             </div>
+                             <% end %>
+                             <tbody>
+                                
+                                 <tr>   
+                                    <!--ADD IF NO PFILTERS to display no filters result-->
+                                    <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
+                                    
+                                    <% @lfilters.each do |lfilter| %>
+                                    <% @students.each do |student| %>
+                                    <% if lfilter.lfilter.casecmp(student.surname) == 0 || lfilter.lfilter.casecmp(student.email) == 0  %>
+                                    <tr>
+                                        <td ><%= "#{student.name} "  %><%= student.surname  %></td>
+                                        <td ><%= "#{student.day_of_birth} /" %>  
+                                            <%= "#{student.month_of_birth} /"%>
+                                            <%= student.year_of_birth %></td>
+                                            <td > <%= student.school %></td>
+                                            <td > <%= student.email %></td>
+                                            <td><%= link_to("Results", {:controller => 'results', :action => 'parent_result', :id =>  student.email}) %></td>
+                                            <td > <%= student.comment %></td>
+
+                                            <% end %>
+
+                                            <% end %>
+
+
+                                        </tbody>
+
+
+                                    </td>
+                                </tr>
+                                
+                                <%end%>
+                                
+                                
+                            </table>
+
                         </div>
                     </div>
-    
-                     <!-------------------------------------------------------------------------------  Filter TABLE END------------------>   
+                </div>    
+                
+                
+                <!------------------------------------------------------------------------------- All Students TABLE BEGIN------------------>   
 
 
-                    
-        
-      </div>
-</div>
-<tbody class="table-hover">
-<tr>
-</tr>
-
-</tbody>    
- <!-------------------------------------------------------------------------------  All Students TABLE END------------------>       
-        
 
 
+                
+                
+                <div class="col-md-12">
+                   
+                   <p>
+                      <button class="btn purple-button btn-primary" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="collapse">
+                        Filter Table
+                    </button>
+                </p>
+                <div class="collapse" id="collapse" >
+                  <div class="card card-body">
+                      
+                      
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Filter Table</h4>
+                            <p class="category">This table contains filters - school,surname or email</p><br>
+                            <p><%= link_to 'Add a Student Filter', new_lfilter_path, class: "btn purple-button"  %> </p>
+                        </div>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                  <th>Surname/Email</th>
+                                  <!--<th>User's Email(delete)</th>-->
+                                  <th class="text-left">Edit/Delete</th>
+                              </thead>
+                              
+                              <!--ROW 1 -->
+                              <!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
+                              <!-- check for 0 filters -->
+                              <% if @lfilters.length == 0 %>
+                              <div class="col-md-12">
+                                <div class="card card-plain">
+                                    <div class="header">
+                                        <h4 class="text-warning">There are no matches in this filter (add a filter first to see resutls if student exist in the database)</h4><br>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <% end %>
+                            <tbody>
+                                
+                             <tr>   
+                                <!--ADD IF NO PFILTERS to display no filters result-->
+                                <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
+                                
+                                <% @lfilters.each do |lfilter| %>
+                                <tr>
+                                    <td><%= lfilter.lfilter %></td>
+                                    <!-- <td><%# lfilter.email %></td>-->
+                                    <td><% if current_user %>
+                                        <%# link_to 'Show', lfilter %> 
+                                        <%= link_to 'Edit', edit_lfilter_path(lfilter) %> /
+                                        <%= link_to 'Delete', lfilter, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                        <%else%>
+                                        <%end%>
+                                    </td>
+                                </tr>
+                                
+                                
+                                <% end %>
+                                
+                            </table>
+
+                        </div>
+                    </div>
                 </div>
+                
+                <!-------------------------------------------------------------------------------  Filter TABLE END------------------>   
+
+
+                
+                
             </div>
         </div>
+        <tbody class="table-hover">
+            <tr>
+            </tr>
 
-
-    
-
-
+        </tbody>    
+        <!-------------------------------------------------------------------------------  All Students TABLE END------------------>       
+        
 
 
     </div>
-     <%= render 'layouts/footer' %>
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
+<%= render 'layouts/footer' %>
 </div>
 
 
 </body>
 
-   <!--   Core JS Files   -->
-    <script src="assets/javascripts/jquery.3.2.1.min.js" type="text/javascript"></script>
-	<script src="assets/javascripts/bootstrap.min.js" type="text/javascript"></script>
+<!--   Core JS Files   -->
+<script src="assets/javascripts/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="assets/javascripts/bootstrap.min.js" type="text/javascript"></script>
 
-	<!--  Charts Plugin -->
-	<script src="assets/javascripts/chartist.min.js"></script>
+<!--  Charts Plugin -->
+<script src="assets/javascripts/chartist.min.js"></script>
 
-    <!--  Notifications Plugin    -->
-    <script src="assets/javascripts/bootstrap-notify.js"></script>
+<!--  Notifications Plugin    -->
+<script src="assets/javascripts/bootstrap-notify.js"></script>
 
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="assets/javascripts/light-bootstrap-dashboard.js?v=1.4.0"></script>
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="assets/javascripts/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
 
 
@@ -259,17 +260,17 @@
 <!--
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>Table Style</title>
-	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+    <meta charset="utf-8" />
+    <title>Table Style</title>
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
 </head>
 
 <p id="notice"><%# notice %></p>
 
 <h1>students/index</h1>
 <body>
-    -->
-    
+-->
+
 
 
  <!-- </body>

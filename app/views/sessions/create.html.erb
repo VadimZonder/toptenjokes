@@ -1,61 +1,62 @@
-  <head>
-      <title><%= yield(:title) %>Login</title>
-  </head>
-  
+
+<head>
+  <title><%= yield(:title) %>Login</title>
+</head>
+
 <!--register expand div  try changin z index + displaying in the middle of the page over all the content-->      
 
-  <div class="card card-body" >
-      
-      <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-1">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h4 class="title">Login</h4>
-                                </div>
-                            <div class="content table-responsive table-full-width">
-    
-                            
-
-<%= flash[:notice] %>
-<br>
-<%= form_tag sessions_path do %>
-<div class="field">
-<%= label_tag :email %><br>
-<%= text_field_tag :email %>
-</div>
-  <div class="field">
-    <%= label_tag :password %><br>
-<%= password_field_tag :password %>
-</div>
-  <div class="actions">
-    <%= submit_tag "Log In", class: "btn purple-button"  %>
-</div>
-<% end %>
-
-  <div>
- <th> <p><%= link_to("Back", {:controller => 'static_pages', :action => 'home'}) %></p></th>
-
-  </div>
-
-
-
- </div>
-                            </div>
-                        </div>
+<div class="card card-body" >
+  
+  <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+                <div class="card card-plain">
+                    <div class="header">
+                        <h4 class="title">Login</h4>
                     </div>
-                    
-                                 </div>
-                                   </div>
-                    
-                                 </div>
-                     
+                    <div class="content table-responsive table-full-width">
+                        
+                        
 
-            
-      
-      
-      
+                        <%= flash[:notice] %>
+                        <br>
+                        <%= form_tag sessions_path do %>
+                        <div class="field">
+                            <%= label_tag :email %><br>
+                            <%= text_field_tag :email %>
+                        </div>
+                        <div class="field">
+                            <%= label_tag :password %><br>
+                            <%= password_field_tag :password %>
+                        </div>
+                        <div class="actions">
+                            <%= submit_tag "Log In", class: "btn purple-button"  %>
+                        </div>
+                        <% end %>
+
+                        <div>
+                           <th> <p><%= link_to("Back", {:controller => 'static_pages', :action => 'home'}) %></p></th>
+
+                       </div>
+
+
+
+                   </div>
+               </div>
+           </div>
+       </div>
+       
+   </div>
+</div>
+
+</div>
+
+
+
+
+
+
 
 
 

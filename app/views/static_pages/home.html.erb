@@ -1,141 +1,152 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	
-	
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<%= favicon_link_tag 'favicon-196.png' %>
-	<title>SchoolApp Home</title>
+    <meta charset="utf-8" />
+    
+    <!--the line below is taken from a template-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    
+    <%= favicon_link_tag 'favicon-196.png' %>
+    <title>SchoolApp Home</title>
 
-
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <!--the line below is taken from a template-->
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <!--the line below is taken from a template-->
     <meta name="viewport" content="width=device-width" />
- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 
 
-    <!-- Bootstrap core CSS     -->
+    <!-- Bootstrap core CSS the --> <!--the line below is taken from a template-->
     <link href="assets/stylesheets/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Animation library for notifications   -->
+    <!-- Animation library for notifications   --><!--the line below is taken from a template-->
     <link href="assets/stylesheets/animate.min.css" rel="stylesheet">
 
-    <!--  Light Bootstrap Table core CSS    -->
+    <!--  Light Bootstrap Table core CSS    --><!--the line below is taken from a template-->
     <link href="assets/stylesheets/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet">
 
 
 
-    <!--     Fonts and icons     -->
+    <!--     Fonts and icons     --><!--the line below is taken from a template-->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--the line below is taken from a template-->
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel="stylesheet" type="text/css">
+    <!--the line below is taken from a template-->
     <link href="assets/stylesheets/pe-icon-7-stroke.css" rel="stylesheet">
-  
+    
 
     
-<link href="https://ajax.googleapis.com/ajax/libs/jquery/3.0.1/jquery.min.js">
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link href="https://ajax.googleapis.com/ajax/libs/jquery/3.0.1/jquery.min.js">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
 
 
 
 </head>
 
 <body>
-   
-   <%= render 'layouts/header' %>
-
-
-
-        <div class="content purple-horizontal" >
-
-            <div class="container-fluid "  >
-                <div class="row">
- <!--PARENT WINDOW ----------------------------------------------------------------------->
-
-                    <div class="col-md-6 hover" >
-                        <div class="card  purple-button ">
-
-                   
-                <%= link_to({:controller => 'parents', :action => 'index'}) do %>
-                            <div class="header ">
-                             
-                      
-                                <h4 class="title">Parent</h4>
-                                <p class="category">See your student's results </p>
-                            </div>
-                       
-          
-                            <div class="content">
-                                <!--content space-->
-                                <br><br><br><br><br>
-                               <!-- <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>-->
-                               <%# link_to image_tag("parents.jpg",class:"image-buttons", id:"parents_image", :size => '168x98') %>
-
-
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Parent,
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Here
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Total Analysis of Marks
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    <% end %>  
-      <!--PARENT WINDOW  END ------------------------------------------------------------------------------------------------------------>
-      
-<!--TEACHER WINDOW  ----------------------------------------------------------------------------------------> 
-                    <div class="col-md-6 hover" >
-                        <div class="card  purple-button ">
  
-                             <%= link_to({:controller => 'students', :action => 'index'}) do%>
-                            <div class="header">
-                                <h4 class="title">Teacher</h4>
-                                <p class="category">Mark your student</p>
-                            </div>
-                            <div class="content">
-                                <!--content space-->
-                                <br><br><br><br><br>
+ <%= render 'layouts/header' %>
 
-                                <!--<div id="chartHours" class="ct-chart"></div>-->
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Teacher,
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Here
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-history"></i> Request your teacher access code by - email: vadimmalakhovski@hotmail.com - or - call: +353857189054
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+ <!--the line below is taken from a template and I added a class-->
+ <div class="content purple-horizontal" >
+    <!--the line below is taken from a template-->
+    <div class="container-fluid "  >
+        <!--the line below is taken from a template-->
+        <div class="row">
+           <!--PARENT WINDOW -->
+           <!--the line below is taken from a template + I changed the size-->
+           <div class="col-md-6 hover" >
+             <!--the line below is taken from a template and I added a class--> 
+             <div class="card  purple-button ">
+
+                 
+                <%= link_to({:controller => 'parents', :action => 'index'}) do %>
+                <div class="header ">
+                   
+                  
+                    <h4 class="title">Parent</h4>
+                    <p class="category">See your student's results </p>
                 </div>
-    <% end %>  
+                
+                
+                <div class="content">
+                    <!--content space-->
+                    <br><br><br><br><br>
+                    <!-- <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>-->
+                    <%# link_to image_tag("parents.jpg",class:"image-buttons", id:"parents_image", :size => '168x98') %>
 
-<!--END TEACHER WINDOW  STATISTICS FIRST BIT OF CONTENT---------------------------------------------------------------------------------------->  
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">How-To Tutorial</h4>
-                                <p class="category">Would you like to know more about us?</p>
-                            </div>
-                            <div class="content">
-                                <!--<div id="chartActivity" class="ct-chart"></div>-->
-                                <div class="youtube">
-												                            <iframe width="auto" height="auto" src="https://www.youtube.com/embed/CElUxx-ZkkM">
-                                    </iframe>
-                                                    
-												</div>
+                    <!--the line below is taken from a template-->
+                    <div class="footer">
+                        <!--the line below is taken from a template-->
+                        <div class="legend">
+                           <!--the line below is taken from a template-->
+                           <i class="fa fa-circle text-info"></i> Parent,
+                           <i class="fa fa-circle text-danger"></i> Click
+                           <i class="fa fa-circle text-warning"></i> Here
+                       </div>
+                       <hr> <!--the line below is taken from a template-->
+                       <div class="stats">
+                           <!--the line below is taken from a template-->
+                           <i class="fa fa-clock-o"></i> Total Analysis of Marks
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <% end %>  
+       <!--PARENT WINDOW  END-->
+       
+       <!--TEACHER WINDOW  --> 
+       <!-- the same applies to the rest of the code. The elemets that I've already declare that are comming form the template are similar below-->
+       <div class="col-md-6 hover" >
+        <div class="card  purple-button ">
+           
+           <%= link_to({:controller => 'students', :action => 'index'}) do%>
+           <div class="header">
+            <h4 class="title">Teacher</h4>
+            <p class="category">Mark your student</p>
+        </div>
+        <div class="content">
+            <!--content space-->
+            <br><br><br><br><br>
+
+            <!--<div id="chartHours" class="ct-chart"></div>-->
+            <div class="footer">
+                <div class="legend">
+                    <i class="fa fa-circle text-info"></i> Teacher,
+                    <i class="fa fa-circle text-danger"></i> Click
+                    <i class="fa fa-circle text-warning"></i> Here
+                </div>
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-history"></i> Request your teacher access code by - email: vadimmalakhovski@hotmail.com - or - call: +353857189054
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<% end %>  
+
+<!--END TEACHER WINDOW  STATISTICS FIRST BIT OF CONTENT-->  
+<div class="row">
+    <div class="col-md-6">
+        <div class="card ">
+            <div class="header">
+                <h4 class="title">How-To Tutorial</h4>
+                <p class="category">Would you like to know more about us?</p>
+            </div>
+            <div class="content">
+                <!--<div id="chartActivity" class="ct-chart"></div>-->
+                <div class="youtube">
+                    <iframe width="auto" height="auto" src="https://www.youtube.com/embed/uBfnNGWW-jg">
+                    </iframe>
+                    
+                </div>
 <!--
                                 <div class="footer">
                                     <div class="legend">
@@ -147,154 +158,154 @@
                                         <i class="fa fa-check"></i>Click Here
                                     </div>
                                 </div>
-                                -->
-                            </div>
+                            -->
                         </div>
                     </div>
-<!--END TEACHER WINDOW  STATISTICS FIRST BIT OF CONTENT---------------------------------------------------------------------------------------->  
- 
-                    <div class="col-md-6">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">Articles</h4>
-                                <p class="category">Education News/Articles</p>
-                            </div>
-                            <div class="content">
-                                <div class="table-full-width">
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-													<div class="checkbox">
-						  							  	<input id="checkbox1" type="checkbox">
-						  							  	<label for="checkbox1"></label>
-					  						  		</div>
-                                                </td>
-                                                <td><%= link_to "Storm Emma: Department of Education 'monitoring' situation as Ireland braces for 'exceptional weather event", "https://www.independent.ie/irish-news/storm-emma/storm-emma-department-of-education-monitoring-situation-as-ireland-braces-for-exceptional-weather-event-36648134.html",  :class => "a", :target => "_blank"%></td>
-                                                
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-													<div class="checkbox">
-						  							  	<input id="checkbox2" type="checkbox" checked>
-						  							  	<label for="checkbox2"></label>
-					  						  		</div>
-                                                </td>
-                                                <td><%= link_to "Leaving Certificate Agricultural Science Higher Level: 'Well balanced and manageable","https://www.independent.ie/irish-news/education/exams/leaving-certificate-agricultural-science-higher-level-well-balanced-and-manageable-30368739.html",  :class => "a", :target => "_blank"%></td>
-                                                
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-													<div class="checkbox">
-						  							  	<input id="checkbox3" type="checkbox">
-						  							  	<label for="checkbox3"></label>
-					  						  		</div>
-                                                </td>
-                                                <td> 
-                                                <%= link_to "Girls make grade again in Junior Cert results","https://www.irishtimes.com/news/education/girls-earn-better-results-than-boys-in-junior-cert-1.2792898",  :class => "a", :target => "_blank"%></td>
-												</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-													<div class="checkbox">
-						  							  	<input id="checkbox4" type="checkbox" checked>
-						  							  	<label for="checkbox4"></label>
-					  						  		</div>
-                                                </td>
-                                                <td>
-        <%= link_to "New Junior Cert English results show more pupils with good grades","https://www.independent.ie/irish-news/education/exams/new-junior-cert-english-results-show-more-pupils-with-good-grades-36127190.html",  :class => "a", :target => "_blank"%></td>
-												
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-													<div class="checkbox">
-						  							  	<input id="checkbox5" type="checkbox">
-						  							  	<label for="checkbox5"></label>
-					  						  		</div>
-                                                </td>
-                                              
-                                                <td>
-   <%= link_to "College place offers being snapped up by students","https://www.independent.ie/irish-news/education/exams/college-place-offers-being-snapped-up-by-students-36056013.html",  :class => "a", :target => "_blank"%></td>
-		</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-													<div class="checkbox">
-						  							  	<input id="checkbox6" type="checkbox" checked>
-						  							  	<label for="checkbox6"></label>
-					  						  		</div>
-                                                </td>
-                                                <td>
-     <%= link_to "Answers to the most common questions on the CAO system","https://www.independent.ie/irish-news/education/exams/answers-to-the-most-common-questions-on-the-cao-system-36056003.html",  :class => "a", :target => "_blank"%></td>
-	
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
+                </div>
+                <!--END TEACHER WINDOW  STATISTICS FIRST BIT OF CONTENT-->  
+                
+                <div class="col-md-6">
+                    <div class="card ">
+                        <div class="header">
+                            <h4 class="title">Articles</h4>
+                            <p class="category">Education News/Articles</p>
+                        </div>
+                        <div class="content">
+                            <div class="table-full-width">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <input id="checkbox1" type="checkbox">
+                                                    <label for="checkbox1"></label>
+                                                </div>
+                                            </td>
+                                            <td><%= link_to "Storm Emma: Department of Education 'monitoring' situation as Ireland braces for 'exceptional weather event", "https://www.independent.ie/irish-news/storm-emma/storm-emma-department-of-education-monitoring-situation-as-ireland-braces-for-exceptional-weather-event-36648134.html",  :class => "a", :target => "_blank"%></td>
                                             
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            <td class="td-actions text-right">
+                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <input id="checkbox2" type="checkbox" checked>
+                                                    <label for="checkbox2"></label>
+                                                </div>
+                                            </td>
+                                            <td><%= link_to "Leaving Certificate Agricultural Science Higher Level: 'Well balanced and manageable","https://www.independent.ie/irish-news/education/exams/leaving-certificate-agricultural-science-higher-level-well-balanced-and-manageable-30368739.html",  :class => "a", :target => "_blank"%></td>
+                                            
+                                            <td class="td-actions text-right">
+                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <input id="checkbox3" type="checkbox">
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
+                                            <td> 
+                                                <%= link_to "Girls make grade again in Junior Cert results","https://www.irishtimes.com/news/education/girls-earn-better-results-than-boys-in-junior-cert-1.2792898",  :class => "a", :target => "_blank"%></td>
+                                            </td>
+                                            <td class="td-actions text-right">
+                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <input id="checkbox4" type="checkbox" checked>
+                                                    <label for="checkbox4"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <%= link_to "New Junior Cert English results show more pupils with good grades","https://www.independent.ie/irish-news/education/exams/new-junior-cert-english-results-show-more-pupils-with-good-grades-36127190.html",  :class => "a", :target => "_blank"%></td>
+                                                
+                                            </td>
+                                            <td class="td-actions text-right">
+                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <input id="checkbox5" type="checkbox">
+                                                    <label for="checkbox5"></label>
+                                                </div>
+                                            </td>
+                                            
+                                            <td>
+                                             <%= link_to "College place offers being snapped up by students","https://www.independent.ie/irish-news/education/exams/college-place-offers-being-snapped-up-by-students-36056013.html",  :class => "a", :target => "_blank"%></td>
+                                         </td>
+                                         <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox">
+                                                <input id="checkbox6" type="checkbox" checked>
+                                                <label for="checkbox6"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                           <%= link_to "Answers to the most common questions on the CAO system","https://www.independent.ie/irish-news/education/exams/answers-to-the-most-common-questions-on-the-cao-system-36056003.html",  :class => "a", :target => "_blank"%></td>
+                                           
+                                       </td>
+                                       <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
 
-                                <div class="footer">
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-history"></i> Educate Yourself
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="footer">
+                        <hr>
+                        <div class="stats">
+                            <i class="fa fa-history"></i> Educate Yourself
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+</div>
 
 
 
@@ -305,40 +316,41 @@
 <%= render 'layouts/footer' %>
 
 
-    </div>
+</div>
 </div>
    <!-- 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
     
- </body>
-
-  
-	 <!--   Core JS Files   -->
-    <script src="assets/javascripts/jquery.3.2.1.min.js" type="text/javascript"></script>
-	<script src="assets/javascripts/bootstrap.min.js" type="text/javascript"></script>
-
-	<!--  Charts Plugin -->
-	<script src="assets/javascripts/chartist.min.js"></script>
-
-    <!--  Notifications Plugin    -->
-    <script src="assets/javascripts/bootstrap-notify.js"></script>
-
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="assets/javascripts/light-bootstrap-dashboard.js?v=1.4.0"></script>
-
-	
-	<!--Script to Synthisize -->
-	
-	
+</body>
 
 
-	
-	
-	
+<!--   Core JS Files   --> <!--the line below is taken from a template-->
+<script src="assets/javascripts/jquery.3.2.1.min.js" type="text/javascript"></script>
+<!--the line below is taken from a template-->
+<script src="assets/javascripts/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Charts Plugin --> <!--the line below is taken from a template-->
+<script src="assets/javascripts/chartist.min.js"></script>
+
+<!--  Notifications Plugin    --> <!--the line below is taken from a template-->
+<script src="assets/javascripts/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    --> <!--the line below is taken from a template-->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose --> <!--the line below is taken from a template-->
+<script src="assets/javascripts/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+
+<!--Script to Synthisize -->
+
+
+
+
+
+
+
 
 
 

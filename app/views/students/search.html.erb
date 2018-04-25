@@ -1,113 +1,113 @@
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>Search Results</title>
-	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+    <meta charset="utf-8" />
+    <title>Search Results</title>
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
 </head>
 
 
- <%= render 'layouts/header' %>
- 
+<%= render 'layouts/header' %>
+
 <div class="content purple-horizontal">
     <div class="col-md-12">
- 
-            <div class="header">
-                <div class="container-fluid">
+       
+        <div class="header">
+            <div class="container-fluid">
+                
+                <h2>You searched for "<%= @search_term %>" </h2>
+                
+                <% if @students.length ==0 %>
+                <div class="header">
+                    <h4 class="title">No students are with that parameter in the Database.</h4>
+                    <h4 class="title">Make sure your spelling is correct and if so then that </h4>
+                    <h4 class="title">means that there are no students created yet with this parameter.</h4>
+
+                    <br>
+                </div>
+            </div>
+        </div>
+        <% else %>
+
+
+
+        
+
+
+
+        <div class="header">
+            
+           
+            <h4 class="title">Found Students</h4>
+            
+        </div>
+        
+        <div class="content">
+            <table class="table table-hover">
+                <thead>
+                    <th class="text-left">Name</th>
+                    <th class="text-center">Date of Birth</th>
+                    <th class="text-center">School</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Results</th>
+                    <th class="text-center">Comment</th>
+                    <th class="text-center">Edit/Delete</th>
+                </thead>
+                
+
+                
+                <!--ROW 1 -->
+                <!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
+                <!--    -->
+
+                <tbody>
                     
-                                                <h2>You searched for "<%= @search_term %>" </h2>
-                                                
-                            <% if @students.length ==0 %>
-                            <div class="header">
-                                <h4 class="title">No students are with that parameter in the Database.</h4>
-                                <h4 class="title">Make sure your spelling is correct and if so then that </h4>
-                                <h4 class="title">means that there are no students created yet with this parameter.</h4>
+                   <tr>
+                       <!--ADD IF NO PFILTERS to display no filters result-->
+                       <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
+                       
+                       
+                       <% @students.each do |student| %>
 
-<br>
-                </div>
-            </div>
-        </div>
-                    <% else %>
+                       <tr>
+                        <td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %></td>
+                        <td class="text-center"><%= "#{student.day_of_birth} /" %>  
+                            <%= "#{student.month_of_birth} /"%>
+                            <%= student.year_of_birth %></td>
+                            <td class="text-center"> <%= student.school %></td>
+                            <td class="text-center"> <%= student.email %></td>
+                            <td class="text-center"><%= link_to("Results", {:controller => 'results', :action => 'teacher_result', :id =>  student.email}) %>
+                            </td>
+                            <td class="text-center"> <%= student.comment %></td>
+                            <!--make the whole page not work if not signed in and delte this sing in-->
+                            <td  class="text-center"><% if current_user %>
+                              <%= link_to 'Edit', edit_student_path(student) %>/
+                              <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
+                          </td>
 
-
-
- 
-
-
-
-                            <div class="header">
-                                
-     
-                                <h4 class="title">Found Students</h4>
-                                
-                            </div>
-                        
-                            <div class="content">
-                                <table class="table table-hover">
-                                    <thead>
-                                            <th class="text-left">Name</th>
-                                        <th class="text-center">Date of Birth</th>
-                                        <th class="text-center">School</th>
-                                        <th class="text-center">Email</th>
-                                        <th class="text-center">Results</th>
-                                        <th class="text-center">Comment</th>
-                                        <th class="text-center">Edit/Delete</th>
-                                    </thead>
-                        
-
-                                    
-                                     <!--ROW 1 -->
-<!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
-<!--    -->
-
-                                    <tbody>
-                                        
-                                         <tr>
-                                             <!--ADD IF NO PFILTERS to display no filters result-->
-                                        <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
-                                      
-                        
-                                         <% @students.each do |student| %>
-
-                                          <tr>
-<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %></td>
-<td class="text-center"><%= "#{student.day_of_birth} /" %>  
-            <%= "#{student.month_of_birth} /"%>
-            <%= student.year_of_birth %></td>
-<td class="text-center"> <%= student.school %></td>
-<td class="text-center"> <%= student.email %></td>
-<td class="text-center"><%= link_to("Results", {:controller => 'results', :action => 'teacher_result', :id =>  student.email}) %>
-</td>
-<td class="text-center"> <%= student.comment %></td>
-<!--make the whole page not work if not signed in and delte this sing in-->
-<td  class="text-center"><% if current_user %>
-              <%= link_to 'Edit', edit_student_path(student) %>/
-             <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                          </td>
-
- <% end %>
-<% end %>
+                          <% end %>
+                          <% end %>
 
 
 
-</tbody>
+                      </tbody>
 
 
-        </td>
-                                          </tr>
-                                     
-                                      <%end%>
-                                  
-                                     
-                                </table>
-                                
-                                <br>
-                                <p class="category"><%= link_to ' ADD a New Student', new_student_path, class: "btn purple-button" %></p>
-                                <%= link_to 'Back', students_path %>
+                  </td>
+              </tr>
+              
+              <%end%>
+              
+              
+          </table>
+          
+          <br>
+          <p class="category"><%= link_to ' ADD a New Student', new_student_path, class: "btn purple-button" %></p>
+          <%= link_to 'Back', students_path %>
 
 
-                </div>
-            </div>
-        </div>
-               </div>
-               </div>
-  <%= render 'layouts/footer' %>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+<%= render 'layouts/footer' %>
