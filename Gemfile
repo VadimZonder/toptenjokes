@@ -11,6 +11,7 @@ gem 'sqlite3', group: [:development, :test]
 #postgres for production db
 gem 'pg', '0.20.0'
 
+#server for Heroku
 gem 'puma'
 
 gem 'rails_12factor', group: :production

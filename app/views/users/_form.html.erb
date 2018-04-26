@@ -44,11 +44,11 @@
                         </div>
                         <div class="field">
                             <%= f.label :password %><br>
-                            <%= f.password_field :password %>
+                            <%= f.password_field :password, :minlength => 6, :maxlength => 25, :size => 20 %>
                         </div>
                         <div class="field">
                             <%= f.label :password_confirmation %><br>
-                            <%= f.password_field :password_confirmation %>
+                            <%= f.password_field :password_confirmation, :minlength => 6, :maxlength => 25, :size => 20 %>
                         </div>
                         <div class="actions">
                          <%= f.submit 'Register', class: "btn purple-button" %>

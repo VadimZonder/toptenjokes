@@ -2,69 +2,33 @@
 == Brakeman Report ==
 
 Application Path: /home/ubuntu/workspace
-Rails Version: 4.2.5
+Rails Version: 4.2.7.1
 Brakeman Version: 4.2.1
-Scan Date: 2018-04-25 19:11:15 +0000
-Duration: 2.448625194 seconds
-Checks Run: BasicAuth, BasicAuthTimingAttack, ContentTag, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, PermitAttributes, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, StripTags, SymbolDoSCVE, TranslateBug, UnsafeReflection, ValidationRegex, WithoutProtection, XMLDoS, YAMLParsing
+Scan Date: 2018-04-26 14:19:12 +0000
+Duration: 1.920485591 seconds
+Checks Run: BasicAuth, BasicAuthTimingAttack, ContentTag, 
+CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, 
+DetailedExceptions, DigestDoS, DynamicFinders, EscapeFunction, 
+Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, 
+ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, 
+JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, 
+ModelAttrAccessible, ModelAttributes, ModelSerialize, 
+NestedAttributes, NestedAttributesBypass, NumberToCurrency, 
+PermitAttributes, QuoteTableName, Redirect, RegexDoS, Render, 
+RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, 
+SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, 
+SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, 
+SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, 
+StripTags, SymbolDoSCVE, TranslateBug, UnsafeReflection, 
+ValidationRegex, WithoutProtection, XMLDoS, YAMLParsing
 
 == Overview ==
 
 Controllers: 11
-Models: 12
-Templates: 58
+Models: 6
+Templates: 49
 Errors: 0
-Security Warnings: 6
+Security Warnings: 0
 
-== Warning Types ==
 
-Cross-Site Scripting: 3
-Denial of Service: 1
-SQL Injection: 1
-Timing Attack: 1
-
-== Warnings ==
-
-Confidence: High
-Category: SQL Injection
-Check: SQLCVEs
-Message: Rails 4.2.5 contains a SQL injection vulnerability (CVE-2016-6317). Upgrade to 4.2.7.1
-File: Gemfile.lock
-Line: 153
-
-Confidence: High
-Category: Timing Attack
-Check: BasicAuthTimingAttack
-Message: Basic authentication in Rails 4.2.5 is vulnerable to timing attacks. Upgrade to 4.2.5.1
-Code: http_basic_authenticate_with(:name => "@user", :password => (Time.now.strftime("%e") + "12345"))
-File: app/controllers/students_controller.rb
-Line: 26
-
-Confidence: Medium
-Category: Cross-Site Scripting
-Check: ContentTag
-Message: Rails 4.2.5 content_tag does not escape double quotes in attribute values (CVE-2016-6316). Upgrade to 4.2.7.1
-File: Gemfile.lock
-Line: 153
-
-Confidence: Medium
-Category: Cross-Site Scripting
-Check: SanitizeMethods
-Message: Loofah 2.0.3 is vulnerable (CVE-2018-8048). Upgrade to 2.1.2
-File: Gemfile.lock
-Line: 153
-
-Confidence: Medium
-Category: Cross-Site Scripting
-Check: SanitizeMethods
-Message: rails-html-sanitizer 1.0.3 is vulnerable (CVE-2018-3741). Upgrade to 1.0.4
-File: Gemfile.lock
-Line: 153
-
-Confidence: Medium
-Category: Denial of Service
-Check: MimeTypeDoS
-Message: Rails 4.2.5 is vulnerable to denial of service via mime type caching (CVE-2016-0751). Upgrade to Rails version 4.2.5.1
-File: Gemfile.lock
-Line: 153
 
