@@ -7,7 +7,7 @@ gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: [:development, :test]
 	
-#postgres for production db
+
 #postgres for production db
 gem 'pg', '0.20.0'
 
@@ -41,7 +41,7 @@ gem 'highcharts-rails'
 gem 'groupdate', '~> 3.2.0'
 gem 'active_median', '~> 0.1.0'
 
-
+#google natural language
 gem "google-cloud-language"
 
 group :test do
