@@ -110,7 +110,7 @@
                             <br>
                             <p><%= f.text_field  :pfilter, required: true %>
                                 <br> </div>
-                                <%= f.label :email %><br><p><%= f.text_field :email, required: true, value:current_user.email, :readonly => true  %>
+                                <%= f.label :email %><br><p><%= f.text_field :email, required: true, :readonly => true  %>
                                     <br> 
                                     <div class="actions"> <%= f.submit 'Create', class: "btn purple-button"  %></div> </p></th>
                                 </tr> 

@@ -1,17 +1,17 @@
 class PfiltersController < ApplicationController
-
-
-  before_action :set_pfilter, only: [:show, :edit, :update, :destroy]
   #include is inheritence to get the contents of the helper. 
 #This is to avoid writing repetative code and is therefore achieveing DRYness
 #include UsersHelper
+
+  before_action :set_pfilter, only: [:show, :edit, :update, :destroy]
+
   # GET /pfilters
   # GET /pfilters.json
   def index
     #@pfilters = Pfilter.all
     ##Here we personalise filters so that each user will have their own unique filter
     #displaying currnet user
-    @user = current_user
+
     @user_email = current_user.email
     #display the pfilters with the current user
     @pfilters= Pfilter.where("email like ? ", @user_email) 
@@ -20,21 +20,21 @@ class PfiltersController < ApplicationController
   # GET /pfilters/1
   # GET /pfilters/1.json
   def show
-    #displaying currnet user
-    @user = current_user
+
   end
 
   # GET /pfilters/new
   def new
     #displaying currnet user
-    @user = current_user
-    
+ 
+    @user_first_name = User.find_by(id: session[:user_id]).first_name
     
     @pfilter = Pfilter.new
   end
 
   # GET /pfilters/1/edit
   def edit
+    @user_first_name = User.find_by(id: session[:user_id]).first_name
     #displaying currnet user
     @user = current_user
   end

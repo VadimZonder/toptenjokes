@@ -12,7 +12,8 @@ class LfiltersController < ApplicationController
     ##Here we personalise filters so that each user will have their own unique filter
     #displaying currnet user
    # @user = current_user
-    @user_email = current_user
+   @user_first_name = User.find_by(id: session[:user_id]).first_name
+
     #display the pfilters with the current user
     @lfilters= Lfilter.where("email like ? ", @user_email) 
   end
@@ -24,10 +25,16 @@ class LfiltersController < ApplicationController
 
   # GET /lfilters/new
   def new
+    @user_first_name = User.find_by(id: session[:user_id]).first_name
     @lfilter = Lfilter.new
   end
 
 
+# GET /pfilters/1/edit
+  def edit
+    @user_first_name = User.find_by(id: session[:user_id]).first_name
+
+  end
   # POST /lfilters
   # POST /lfilters.json
   def create
