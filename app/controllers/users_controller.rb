@@ -7,16 +7,12 @@ class UsersController < ApplicationController
     
     def admin_login
         session[:login] = 1
-        flash[:notice] = "Admin Login sucessfull!!"
- 
-        
+        flash[:notice] = "Admin Login sucessfull!"
     end 
     
     def logout
         session[:login] = nil
-        flash[:notice] = "You have been successfully logged out!!"
-
-        #do not forget to change this
+        flash[:notice] = "You have been successfully logged out!"
     end    
 
   # GET /users
