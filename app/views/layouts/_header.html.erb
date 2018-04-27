@@ -70,7 +70,8 @@
         <!-------------------------------------------------------------------------------  headers-->
         <!--going back-->
         <a class="navbar-brand" href="../">
-          <%="Home" %>
+            <p class="font-weight-bold"><i class="fa fa-home"></i>  <%=" Home" %></p>
+        
           
       </a>
   </div>
@@ -87,19 +88,19 @@
        
        
         <a  class="dropdown-toggle" data-toggle="dropdown" href="https://schoolapple.herokuapp.com/users/<%= @user_id%>/edit">
-            <i class="fa fa-dashboard"></i>
+           
             <%#=link_to "Welcome:   #{@user_name}", "https://deploy-vadimmalakhovski.c9users.io/users/#{@user_id}/edit" %>  <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
             <%#activate when deploying%>
-            <p ><%= "Welcome:   #{@user_first_name}"%></p>
+            <p > <i class="fa fa-user"></i><%= " Hey:   #{@user_first_name}"%></p>
             <%#link_to  "https://schoolapple.herokuapp.com//users/#{@user_id}/edit" %> <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
             
         </a>
     </li>
     
-    <li>
-     <a href="logout">
-        <i class="fa fa-search"></i>
-        <p ><%= "Log Out"%></p>
+    <li >
+     <a  href="logout">
+        
+        <p  class="float-left"> <i class="fa fa-power-off"></i><%= "     Log Out"%></p>
     </a>
 </li> 
 
@@ -107,15 +108,15 @@
 <%else%>
 <li>
     <a href="signup" >
-        <i class="fa fa-dashboard"></i>
-        <p >Register</p>
+        
+        <p ><i class="fa fa-user-plus"></i><%=" Register"%></p>
     </a>
 </li>
 
 <li>
  <a href="login">
-    <i class="fa fa-search"></i>
-    <p>Login</p>
+
+    <p><i class="fa fa-user-o"></i> <%=" Login"%></p>
 </a>
 </li>
 <%end%>
