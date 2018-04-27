@@ -26,57 +26,38 @@ include UsersHelper
    http_basic_authenticate_with :name => "@user", :password => @date + "12345"
   
 
-def search
-      #need to get the currnet user in order to display in the header
-   ###@user = current_user
-    
-  @search_term = params[:q]
- #@the search term is what will be presented in q
-  st ="%#{params[:q]}%"
-  #seatchterm will be used to search in students table searchin for the first name here
-  @students = Student.where("email like (?) or surname like (?) or school like (?)", st, st, st)
-end
-
-=begin delete later = depriciatedS
-def filter
-  #:filter is column in the schema table filters
-    st = params[:filter]
-    #now compare that filter name with student
-    @students= Student.where("school like ? ", st)
-end
-=end
-
-def pfilter
-  #add if the current user email matches the pfilter email the show (maybe in views)
-    #st = params[:pfilter] (this does not work with emails for some reason)
-    st ="%#{params[:pfilter]}%"
-    #now compare that filter name with student
-    @students= Student.where("school like (?) or surname like (?) or email like (?)",st,st, st) #
-    #display all the pfilters
-    #@pfilters = Pfilter.all
-    #displaying currnet user
-    #@user = current_user.email
-    #display the pfilters with the current user
-    #@pfilters= Pfilter.where("email like ? ", @user) 
-   # @students= Student.where("school like ? ", st)
-
-end
-def parent_filter
-  @pfilters = Pfilter.all
-    
-   #add if the current user email matches the pfilter email the show (maybe in views)
-    st = params[:pfilter]
-    #now compare that filter name with student
-    @students= Student.where("school like (?) or surname like (?) or email like (?)",st,st, st) #
-    #display all the pfilters
-    #@pfilters = Pfilter.all
-    #displaying currnet user
-    #@user = current_user.email
-    #display the pfilters with the current user
-    #@pfilters= Pfilter.where("email like ? ", @user) 
-   # @students= Student.where("school like ? ", st)
-
-end
+  def search
+    @search_term = params[:q]
+    #@the search term is what will be presented in q
+    st ="%#{params[:q]}%"
+    #seatchterm will be used to search in students table searchin for the first name here
+    @students = Student.where("email like (?) or surname like (?) or school like (?)", st, st, st)
+  end
+  
+  def pfilter
+    #add if the current user email matches the pfilter email the show (maybe in views)
+      #st = params[:pfilter] (this does not work with emails for some reason)
+      st ="%#{params[:pfilter]}%"
+      #now compare that filter name with student
+      @students= Student.where("school like (?) or surname like (?) or email like (?)",st,st, st) #
+      #display all the pfilters
+      #@pfilters = Pfilter.all
+      #displaying currnet user
+      #@user = current_user.email
+      #display the pfilters with the current user
+      #@pfilters= Pfilter.where("email like ? ", @user) 
+     # @students= Student.where("school like ? ", st)
+  
+  end
+  def parent_filter
+      @pfilters = Pfilter.all
+      
+     #add if the current user email matches the pfilter email the show (maybe in views)
+      st = params[:pfilter]
+      #now compare that filter name with student
+      @students= Student.where("school like (?) or surname like (?) or email like (?)",st,st, st) 
+  
+  end
 
 
   # GET /students
@@ -87,19 +68,12 @@ end
     #@pfilters = Pfilter.all
     @students = Student.all
 
-    
     ##Here we personalise filters so that each user will have their own unique filte
     #displaying currnet user
-  ###  @user_email = current_user.email
- ###   @user = current_user
- st=@user_email
+    st=@user_email
     #display the pfilters with the current user
     @pfilters= Pfilter.where("email like ? ", st) 
-    
-    #name = "Vadim"
-    #@students= Student.where("name like ? ", name)
-    #add this gem later
-    #@items = Item.paginate(:page => params[:page], :per_page => 2)
+
   end
 
   # GET /students/1
@@ -117,10 +91,8 @@ end
   # GET /students/new
   def new
     #need to get the currnet user in order to display in the header
-  @user = current_user
-      
-
-    
+    @user = current_user
+  
     @student = Student.new
   end
 
@@ -133,7 +105,7 @@ end
   ###  @user_first_name= current_user.first_name
   ###  @user_last_name= current_user.last_name
   end
-#
+
   # POST /students
   # POST /students.json
   def create
@@ -175,7 +147,7 @@ end
       format.json { head :no_content }
     end
   end
-#
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+    
     resources :students do 
         resources :results
     end
@@ -28,8 +29,8 @@ Rails.application.routes.draw do
     
     # You can have the root of your site routed with "root"
     #ROOT PAGE IS THE STATI_COTROLLER'S INDEX METHOD WHICH WILL BE RENDERED IN VIEWS
-     root 'static_pages#home'
-     get '/about' => 'static_pages#about'
+    root 'static_pages#home'
+    get '/about' => 'static_pages#about'
  
 
 	match ':controller(/:action(/:id))', :via => :get
