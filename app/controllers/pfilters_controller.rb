@@ -1,7 +1,4 @@
 class PfiltersController < ApplicationController
-  #include is inheritence to get the contents of the helper. 
-#This is to avoid writing repetative code and is therefore achieveing DRYness
-#include UsersHelper
 
   before_action :set_pfilter, only: [:show, :edit, :update, :destroy]
 
@@ -20,21 +17,23 @@ class PfiltersController < ApplicationController
   # GET /pfilters/1
   # GET /pfilters/1.json
   def show
-
+    #displaying currnet user's first name
+    @user_first_name = User.find_by(id: session[:user_id]).first_name
+    @user_id= User.find_by(id: session[:user_id]).id
   end
 
   # GET /pfilters/new
   def new
-    #displaying currnet user
- 
+    #displaying currnet user's first name
     @user_first_name = User.find_by(id: session[:user_id]).first_name
-    
+    @user_id= User.find_by(id: session[:user_id]).id
     @pfilter = Pfilter.new
   end
 
   # GET /pfilters/1/edit
   def edit
     @user_first_name = User.find_by(id: session[:user_id]).first_name
+    @user_id= User.find_by(id: session[:user_id]).id
     #displaying currnet user
     @user = current_user
   end

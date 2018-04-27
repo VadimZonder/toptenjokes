@@ -1,9 +1,6 @@
 class LfiltersController < ApplicationController
-  
-  before_action :set_lfilter, only: [:show, :edit, :update, :destroy]
-  #include is inheritence to get the contents of the helper. 
-#This is to avoid writing repetative code and is therefore achieveing DRYness
-#include UsersHelper
+before_action :set_lfilter, only: [:show, :edit, :update, :destroy]
+
 
   # GET /lfilters
   # GET /lfilters.json
@@ -11,8 +8,7 @@ class LfiltersController < ApplicationController
     #@lfilters = Lfilter.all
     ##Here we personalise filters so that each user will have their own unique filter
     #displaying currnet user
-   # @user = current_user
-   @user_first_name = User.find_by(id: session[:user_id]).first_name
+    @user_first_name = User.find_by(id: session[:user_id]).first_name
 
     #display the pfilters with the current user
     @lfilters= Lfilter.where("email like ? ", @user_email) 
@@ -21,20 +17,24 @@ class LfiltersController < ApplicationController
   # GET /lfilters/1
   # GET /lfilters/1.json
   def show
+    @user_first_name = User.find_by(id: session[:user_id]).first_name
+    @user_id= User.find_by(id: session[:user_id]).id
   end
 
   # GET /lfilters/new
   def new
     @user_first_name = User.find_by(id: session[:user_id]).first_name
+    @user_id= User.find_by(id: session[:user_id]).id
     @lfilter = Lfilter.new
   end
 
 
-# GET /pfilters/1/edit
+  # GET /pfilters/1/edit
   def edit
     @user_first_name = User.find_by(id: session[:user_id]).first_name
-
+    @user_id= User.find_by(id: session[:user_id]).id
   end
+  
   # POST /lfilters
   # POST /lfilters.json
   def create

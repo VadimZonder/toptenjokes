@@ -7,17 +7,15 @@ class UsersController < ApplicationController
     
     def admin_login
         session[:login] = 1
-        session[:cart] = nil
         flash[:notice] = "Admin Login sucessfull!!"
-        redirect_to :controller => :items
+ 
         
     end 
     
     def logout
         session[:login] = nil
-        session[:cart] = nil
         flash[:notice] = "You have been successfully logged out!!"
-        redirect_to :controller => :items
+
         #do not forget to change this
     end    
 
@@ -105,32 +103,4 @@ def users
   
 end
 
-
-
-#(if from browser /parent is called)
-def parent
-  
-@users_message = "I am a parent"
-end
- #(when in views var will be called)
-
-#(if from browser /principal is called)
-def principal
-@user_message = "I am a princila/admin"
-end
- #(when in views var will be called)
-
- 
- #(if from browser /teacher is called)
-def teacher
-
-@teacher_message = "I am a teacher"
-end
- #(when in views var will be called)
- 
- #(if from browser /student is called)
-def student
-@user_message = "I am a student"
-end
- #(when in views var will be called)
 end

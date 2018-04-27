@@ -18,29 +18,6 @@
 @import 'bootstrap';
 */
 
-/*
-.divider{
-    width:5px;
-    height:auto;
-    display:inline-block;
-}
-.field{
-    
-}
-.card{
-    max-width: 400px;
-}
-if screen small then  position absolute
-.center {
-    margin: auto;
-    margin-left: 50%;
-    width: 20%;
-    border: 3px solid green;
-    padding: 10px;
-    position: absolute;
-    z-index: 3;
-}
-*/
 #application_body{
     position: absolute;
     right: 0;
@@ -52,25 +29,20 @@ if screen small then  position absolute
     display:block;
     cursor: pointer;
 }
- /*
-.filters{
-        position: absolute;
-    margin-left: 450px;
 
- }*/
 
 span{
-        font-family: verdana, arial, helvetica, sans-serif;
-            margin: 0;
-    
+    font-family: verdana, arial, helvetica, sans-serif;
+    margin: 0;
     font-weight: 600;
     line-height: 30px;
     font-size: 12px; 
     text-transform: uppercase;
     margin-left: 5px;
 }
+
 a{
-     text-decoration: none;
+    text-decoration: none;
   
 }
 
@@ -132,6 +104,4 @@ border-top-style:solid;
     width: 100%;
     top: 0;
     left: 0;
-
-    
 }

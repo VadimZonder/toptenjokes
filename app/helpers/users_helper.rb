@@ -18,15 +18,10 @@ module UsersHelper
      @user_id= User.find_by_email(@user_email).id
      return true
     else 
-  # @sign_in=false
-   return false
-    #@helper ="helper works"
+   # @sign_in=false
+     return false
+     #@helper ="helper works"
+    end
   end
-  
-   
-  end
-  
-  
-  
-
+ 
 end

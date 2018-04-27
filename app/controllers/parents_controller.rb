@@ -1,62 +1,53 @@
 class ParentsController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-   before_action :set_student, only: [:show]
-   before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_filter, :index]
- #include is inheritence to get the contents of the helper. 
-#This is to avoid writing repetative code and is therefore achieveing DRYness
-include UsersHelper  
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_student, only: [:show]
+    before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_filter, :index]
+    #include is inheritence to get the contents of the helper. 
+    #This is to avoid writing repetative code and is therefore achieveing DRYness
+    include UsersHelper  
 
 
-def lfilter
-    ##fixed BUG fix the lfiter by email it is vital function
-  #add if the current user email matches the pfilter email the show (maybe in views) fixed!!!
-    #st = params[:lfilter] (this does not work with emails for some reason)
-    st ="%#{params[:lfilter]}%"
-    #now compare that filter name with student
-    @students= Student.where("surname like (?) or email like (?)",st, st) #
-    #display all the pfilters
-    #@pfilters = Pfilter.all
-    #displaying currnet user
-    #@user = current_user.email
-    #display the pfilters with the current user
-    #@pfilters= Pfilter.where("email like ? ", @user) 
-   # @students= Student.where("school like ? ", st)
-
-end
-
-def parent_result
-
-    @results= Result.all
-    #get the current URI once on this page
-    @URI = request.original_url
-    #split the URI to get everything after the = sign
-    @URI = @URI.split('=').last
-    #take the % sign out of the string
-    @URI = @URI.tr('%', '')
-    #get everything befor 40 and everything after 40
-    @splitEmailF =  @URI.split("40").first
-    @splitEmailL =  @URI.split("40").last
-    # to add between first and last in order to reconstruct the email
-    @at="@"  
-    @st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
-    #saving the reconstructed email into a variable
-    st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
-    #searching the DB to match all the results of a student with the unique email
-    @results= Result.where("email like ? ",st)    
+    def lfilter
+        ##fixed BUG fix the lfiter by email it is vital function
+        #add if the current user email matches the pfilter email the show (maybe in views) fixed!!!
+        #st = params[:lfilter] (this does not work with emails for some reason)
+        st ="%#{params[:lfilter]}%"
+        #now compare that filter name with student
+        @students= Student.where("surname like (?) or email like (?)",st, st) #
+        #display all the pfilters
+        #@pfilters = Pfilter.all
+    end
     
-  
-end
+    def parent_result
+        @results= Result.all
+        #get the current URI once on this page
+        @URI = request.original_url
+        #split the URI to get everything after the = sign
+        @URI = @URI.split('=').last
+        #take the % sign out of the string
+        @URI = @URI.tr('%', '')
+        #get everything befor 40 and everything after 40
+        @splitEmailF =  @URI.split("40").first
+        @splitEmailL =  @URI.split("40").last
+        # to add between first and last in order to reconstruct the email
+        @at="@"  
+        @st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
+        #saving the reconstructed email into a variable
+        st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
+        #searching the DB to match all the results of a student with the unique email
+        @results= Result.where("email like ? ",st)    
+    end
+    
    def parent_search
-  @search_term = params[:q]
- #@the search term is what will be presented in q
-  st ="%#{params[:q]}%"
-  #seatchterm will be used to search in students table searchin for the first name here
-  @students = Student.where("surname like (?) or email like (?)", st, st)
-  
-  
+      @search_term = params[:q]
+      #@the search term is what will be presented in q
+      st ="%#{params[:q]}%"
+      #seatchterm will be used to search in students table searchin for the first name here
+      @students = Student.where("surname like (?) or email like (?)", st, st)
+ 
     #returning all the results in the DB for all the students
     #@results = Result.all
-
+    
     #get the current URI once on this page
     @URI = request.original_url
     #split the URI to get everything after the = sign
@@ -76,78 +67,59 @@ end
    end
 
 
-def parent_filter
- #add if the current user email matches the pfilter email the show (maybe in views)
-    st = params[:pfilter]
-    #now compare that filter name with student
-    @students= Student.where("school like (?) or surname like (?) or email like (?)",st,st, st) #
-#BUG cant categorise by email from student DB (works with other params)
-    #:filter is column in the schema table filters
-    #name = params[:filter]
-    #surname = params[:filter]
-    #now compare that filter name with student
-     #@students= Student.where("name like (?)" name.
-  #where("user_id is not in (?)",[user_ids])
-    #@students= Student.where("surname like (?)",surname)
+    def parent_filter
+       #add if the current user email matches the pfilter email the show (maybe in views)
+        st = params[:pfilter]
+        #now compare that filter name with student
+        @students= Student.where("school like (?) or surname like (?) or email like (?)",st,st, st) #
+        #BUG cant categorise by email from student DB (works with other params)
+        #:filter is column in the schema table filters
+        #name = params[:filter]
+        #surname = params[:filter]
+        #now compare that filter name with student
+         #@students= Student.where("name like (?)" name.
+        #where("user_id is not in (?)",[user_ids])
+        #@students= Student.where("surname like (?)",surname)
+        
+        #make it work
+        #email = "arthur@hotmail.com"
+        #@students=Student.where("email like (?)",email)
     
-    #make it work
-    #email = "arthur@hotmail.com"
-    #@students=Student.where("email like (?)",email)
-
-end
-
-def parent_pfilter
-
-#BUG cant categorise by email from student DB (works with other params)
-    #:filter is column in the schema table filters
-    name = params[:filter]
-    surname = params[:filter]
-    #now compare that filter name with student
-     #@students= Student.where("name like (?)" name.
-  #where("user_id is not in (?)",[user_ids])
-    @students= Student.where("surname like (?)",surname)
+    end
     
-    #make it work
-    #email = "arthur@hotmail.com"
-    #@students=Student.where("email like (?)",email)
-
-end
-
-def index
- @students = Student.all
- @parent_filters = ParentFilter.all
- #@pfilters=Pfilter.all
- 
-    ##Here we personalise filters so that each user will have their own unique filter
-    #displaying currnet user
-    #the @vars are now available in views
+    def parent_pfilter
+        #BUG cant categorise by email from student DB (works with other params)
+        #:filter is column in the schema table filters
+        #name = params[:filter]
+        surname = params[:filter]
+        #now compare that filter name with student
+         #@students= Student.where("name like (?)" name.
+      #where("user_id is not in (?)",[user_ids])
+        @students= Student.where("surname like (?)",surname)
+        
+        #make it work
+        #email = "arthur@hotmail.com"
+        #@students=Student.where("email like (?)",email)
     
-    #user to be accessable on all of the pages
-    @user = current_user
-    #user_email for search purposes
-    #@user_email = current_user.email
-    #display the pfilters with the current user
-    @lfilters= Lfilter.where("email like ? ", @user_email)  
-
-
-end
-
-
-#(if from browser /login is called)
-def login
-@parent = "Sing in"
-end
-
-
-#(if from browser /parent is called)
-def loggedin
-@parent = "I am a singed in"
-end
-
-#(if from browser /parent is called)
-def loggedout
-@parent = "I am a singed out"
-end
+    end
+    
+    def index
+         @students = Student.all
+         @parent_filters = ParentFilter.all
+         #@pfilters=Pfilter.all
+         
+        ##Here we personalise filters so that each user will have their own unique filter
+        #displaying currnet user
+        #the @vars are now available in views
+        
+        #user to be accessable on all of the pages
+        @user = current_user
+        #user_email for search purposes
+        #@user_email = current_user.email
+        #display the pfilters with the current user
+        @lfilters= Lfilter.where("email like ? ", @user_email)  
+    end
+    
 
 
 
