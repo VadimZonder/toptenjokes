@@ -2203,7 +2203,11 @@ fieldset[disabled] .btn-neutral.active {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
     background-color: #FFFFFF;
     margin-bottom: 30px;
+    
+     
 }
+
+
 
 .card .image {
     width: 100%;
@@ -2262,6 +2266,7 @@ fieldset[disabled] .btn-neutral.active {
 
 .card .header {
     padding: 15px 15px 0;
+    
 }
 
 .card .category,
@@ -2363,6 +2368,7 @@ fieldset[disabled] .btn-neutral.active {
 .card .table tbody td:last-child,
 .card .table thead th:last-child {
     padding-right: 15px;
+   
 }
 
 .card .alert {
@@ -3444,6 +3450,7 @@ fieldset[disabled] .btn-neutral.active {
         margin: 10px 15px 10px 0;
         width: 40px;
         height: 40px;
+        
     }
     .bar1,
     .bar2,
@@ -3818,6 +3825,7 @@ fieldset[disabled] .btn-neutral.active {
     }
     .navbar-header .collapse, .navbar-toggle {
         display: block !important;
+        
     }
     .navbar-header {
         float: none;

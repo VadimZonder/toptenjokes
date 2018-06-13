@@ -7,41 +7,12 @@
 
         <div class="sidebar-wrapper" >
             <div class="logo">
-                <a href="https://www.linkedin.com/in/vadim-malakhovski/" target="_blank" class="simple-text">
-                    SchoolApp
+                <a href="" target="_blank" class="simple-text">
+                    TopTenJokes
                 </a>
             </div>
 
-            <ul class="nav">
-                <li>
-                    <%= link_to ({:controller => 'parents', :action => 'index'}) do %>
-                    <%= image_tag("icons/parents32.png", :alt => "parents", :class => "header_icons") %>
-                    <span>Parents</span>
-                    <% end %>
-                </li>
-
-                <li>
-                    <%= link_to ({:controller => 'students', :action => 'index'}) do %>
-                    <%= image_tag("icons/teachers32.png", :alt => "teachers", :class => "header_icons") %>
-                    <span>Teachers</span>
-                    <% end %>
-                </li>
-
-                <li>
-                    <%= link_to "https://www.irishtimes.com/news/education" ,target: "_blank" do %>
-                    <%= image_tag("icons/articles32.png", :alt => "articles", :class => "header_icons") %>
-                    <span>Articles</span>
-                    <% end %>
-                </li>
-
-                <li>
-                    <%= link_to ({:controller => 'static_pages', :action => 'about'}) do %>
-                    <%= image_tag("icons/about32.png", :alt => "about", :class => "header_icons") %>
-                    <span>About Us</span>
-                    <% end %>
-                </li>
-
-            </ul>
+            
         </div>
     </div>
     <!--the line below is taken from a template-->
@@ -65,7 +36,7 @@
                     <!--<a class="navbar-brand" href="#">Dashboard</a>-->
                     <!-- headers-->
                     <!--going back-->
-                    <a class="navbar-brand" href="https://schoolapple.herokuapp.com">
+                    <a class="navbar-brand" href="">
                         <p class="font-weight-bold"><i class="fa fa-home"></i>  <%=" Home" %></p>
 
 
@@ -79,44 +50,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
 
-                        <% if current_user%> 
-                        <li>
-
-
-                            <a href="https://schoolapple.herokuapp.com/users/<%= @user_id%>/edit">
-
-                                <%#=link_to "Welcome:   #{@user_name}", "https://deploy-vadimmalakhovski.c9users.io/users/#{@user_id}/edit" %>  <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
-                                <%#activate when deploying%>
-                                <p > <i class="fa fa-user"></i><%= " Hey:   #{@user_first_name}"%></p>
-                                <%#link_to  "https://schoolapple.herokuapp.com//users/#{@user_id}/edit" %> <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
-
-                            </a>
-                        </li>
-
-                        <li >
-                            <a href="https://schoolapple.herokuapp.com/logout">
-
-                                <p  class="float-left"> <i class="fa fa-power-off"></i><%= "     Log Out"%></p>
-                            </a>
-                        </li> 
-
-
-                        <%else%>
-                        <li>
-                            <a href="https://schoolapple.herokuapp.com/signup" >
-
-                                <p ><i class="fa fa-user-plus"></i><%=" Register"%></p>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="https://schoolapple.herokuapp.com/login">
-
-                                <p><i class="fa fa-user-o"></i> <%=" Login"%></p>
-                            </a>
-                        </li>
-                        <%end%>
-
+                       
                     </ul>
 
 
