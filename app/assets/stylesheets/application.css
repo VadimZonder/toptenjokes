@@ -84,7 +84,7 @@ a:active {
 }
 .purple-horizontal{
 border-top-style:solid;
-
+    border-bottom-style:solid;
    border-color:  #7625ff;
    border-width: 1px;
 }
