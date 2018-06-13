@@ -81,12 +81,12 @@ a:active {
 }
 .purple-button{
 
-    border: 1px solid  #7625ff;
+   /* border: 1px solid  #7625ff;*/
 }
 .purple-horizontal{
   /*border-top-style:solid;
-  border-bottom-style:solid;*/
-   border-color:  #7625ff;
+  border-bottom-style:solid;
+   border-color:  #7625ff;*/
    border-width: 1px;
 }
 .purple{
