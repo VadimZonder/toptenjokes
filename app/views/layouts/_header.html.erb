@@ -12,6 +12,39 @@
                 </a>
             </div>
 
+ <ul class="nav">
+     
+                 <li>
+                    <%= link_to ({:controller => 'static_pages', :action => 'home'}) do %>
+                    <%= image_tag("icons/home32.png", :alt => "home", :class => "header_icons") %>
+                    <span>Home</span>
+                    <% end %>
+                </li>
+
+     
+                <li>
+                    <%= link_to ({:controller => 'static_pages', :action => 'about'}) do %>
+                    <%= image_tag("icons/teachers32.png", :alt => "about", :class => "header_icons") %>
+                    <span>About Us</span>
+                    <% end %>
+                </li>
+                
+                <li>
+                    <%= link_to ({:controller => 'static_pages', :action => 'policy'}) do %>
+                    <%= image_tag("icons/articles32.png", :alt => "policy", :class => "header_icons") %>
+                    <span>Private Policy</span>
+                    <% end %>
+                </li>
+
+                <li>
+                    <%= link_to ({:controller => 'static_pages', :action => 'contact'}) do %>
+                    <%= image_tag("icons/about32.png", :alt => "contact", :class => "header_icons") %>
+                    <span>Contact Us</span>
+                    <% end %>
+                </li>
+
+            
+            </ul>
             
         </div>
     </div>
@@ -36,7 +69,7 @@
                     <!--<a class="navbar-brand" href="#">Dashboard</a>-->
                     <!-- headers-->
                     <!--going back-->
-                    <a class="navbar-brand" href="">
+                    <a class="navbar-brand" href="..">
                         <p class="font-weight-bold"><i class="fa fa-home"></i>  <%=" Home" %></p>
 
 

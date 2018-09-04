@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     #ROOT PAGE IS THE STATI_COTROLLER'S INDEX METHOD WHICH WILL BE RENDERED IN VIEWS
     root 'static_pages#home'
     get '/about' => 'static_pages#about'
+    get '/policy' => 'static_pages#policy'
+    get '/contact' => 'static_pages#contact'
  
 
 	match ':controller(/:action(/:id))', :via => :get
