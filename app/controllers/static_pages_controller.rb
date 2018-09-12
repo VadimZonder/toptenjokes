@@ -9,6 +9,14 @@ class StaticPagesController < ActionController::Base
   def home
    @time = Time.now.strftime("%B %e, %Y at %I:%M %p")
   end
+  
+ def demotivators
+ 
+ end
+ 
+ def real_fun
+ 
+ end
 
  def about
  

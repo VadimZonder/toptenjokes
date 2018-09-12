@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     get '/about' => 'static_pages#about'
     get '/policy' => 'static_pages#policy'
     get '/contact' => 'static_pages#contact'
+    get '/demotivators' => 'static_pages#demotivators'
+    get '/real_fun' => 'static_pages#real_fun'
  
 
 	match ':controller(/:action(/:id))', :via => :get
